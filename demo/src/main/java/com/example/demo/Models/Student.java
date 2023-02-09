@@ -15,7 +15,8 @@ public class Student {
     String name;
     Integer age;
 
-
+    @OneToMany
+    @JoinColumn(referencedColumnName = "id")
 
     public Integer getId() {
         return id;
