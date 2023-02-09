@@ -27,15 +27,16 @@ public class Course {
     public void setId(Integer id) {
         this.id = id;
     }
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
-    List<Mark>marks;
-
-    public List<Mark> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<Mark> marks) {
-        this.marks = marks;
-    }
+    @ManyToOne
+    @JoinColumn(name="student_id",referencedColumnName = "id")
+    Student student;
+//    List<Mark>marks;
+//
+//    public List<Mark> getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(List<Mark> marks) {
+//        this.marks = marks;
+//    }
 }

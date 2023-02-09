@@ -27,16 +27,16 @@ public class School {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
-    List<Student> student;
-    public List<Student> getStudent() {
-        return student;
-    }
-
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
+//    @OneToMany
+//    @JoinColumn(referencedColumnName = "id")
+//   List<Student> student;
+//    public List<Student> getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(List<Student> student) {
+//        this.student = student;
+//    }
 
 
 }

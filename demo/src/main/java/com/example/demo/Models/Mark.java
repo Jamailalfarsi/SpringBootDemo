@@ -1,9 +1,8 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 
 @Entity
 public class Mark {
@@ -40,4 +39,8 @@ public class Mark {
     }
 
     String grade;
+    @ManyToOne
+    @JoinColumn(name="course_id",referencedColumnName = "id")
+    @Autowired
+    Course course;
 }

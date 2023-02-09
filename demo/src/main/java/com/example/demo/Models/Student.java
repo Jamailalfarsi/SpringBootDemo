@@ -1,12 +1,17 @@
 package com.example.demo.Models;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
 
 
 public class Student {
+
+
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
@@ -15,8 +20,10 @@ public class Student {
     String name;
     Integer age;
 
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name="school_id",referencedColumnName = "id")
+    @Autowired
+    School school;
 
     public Integer getId() {
         return id;
