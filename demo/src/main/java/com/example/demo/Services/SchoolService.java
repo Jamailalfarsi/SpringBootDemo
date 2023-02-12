@@ -19,5 +19,8 @@ public class SchoolService {
         return  schoolRepository.getSchoolById(id);
 
     }
+    public School getBySchoolName( String school_name){
+        return schoolRepository.getBySchoolName(school_name);
+    }
 
 }

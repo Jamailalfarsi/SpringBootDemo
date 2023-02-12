@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import com.example.demo.Repositories.CourseRepository;
 import com.example.demo.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,12 @@ public class CourseService {
     public Course getCourseById(Integer id){
         return courseRepository.getCourseById(id);
     }
+
+    public Course getByCourseName( String course_name){
+        return courseRepository.getByCourseName(course_name);
+    }
+
+
+
 
 }

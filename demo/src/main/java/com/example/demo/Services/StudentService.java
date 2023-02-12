@@ -30,6 +30,9 @@ public class StudentService {
         return  studentRepository.getStudentById(id);
 
     }
+    public Student getByStudentName(String student_name){
+        return studentRepository.getByStudentName(student_name);
+    }
 
     }
 

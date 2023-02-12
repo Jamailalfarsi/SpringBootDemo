@@ -40,7 +40,6 @@ public class GeneralController {
 
     @RequestMapping(value="student/getAll",method= RequestMethod.GET)
     public List<Student> getAllStudents(){
-        // List<School> schools=new ArrayList<>();
         List<Student> students=studentService.getAllStudents();
         return students;
     }
@@ -49,7 +48,6 @@ public class GeneralController {
 
     @RequestMapping(value="course/getAll",method= RequestMethod.GET)
     public List<Course> getAllCourses(){
-        // List<School> schools=new ArrayList<>();
 
         List<Course> courses=courseService.getAllCourses();
         return courses;
@@ -57,7 +55,6 @@ public class GeneralController {
 
     @RequestMapping(value="mark/getAll",method= RequestMethod.GET)
     public List<Mark> getAllMarks(){
-        // List<School> schools=new ArrayList<>();
 
         List<Mark> marks=markService.getAllMarks();
         return marks;
@@ -90,6 +87,25 @@ public class GeneralController {
         Course course=courseService.getCourseById(id);
         return course;
     }
+
+    @RequestMapping(value="school/getByName",method=RequestMethod.GET)
+    public School getSchoolByName(@RequestParam String school_name){
+        School school=schoolService.getBySchoolName(school_name);
+        return school;
+    }
+
+    @RequestMapping(value="student/getByName",method=RequestMethod.GET)
+    public Student getStudentByName(@RequestParam String student_name){
+        Student student=studentService.getByStudentName(student_name);
+        return student;
+    }
+
+    @RequestMapping(value="course/getByName",method=RequestMethod.GET)
+    public Course getCourseByName(@RequestParam String course_name){
+        Course course=courseService.getByCourseName(course_name);
+        return course;
+    }
+
 
 }
 
