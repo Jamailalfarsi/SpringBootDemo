@@ -19,4 +19,8 @@ public class CourseService {
         return courseRepository.getAllCourses();
     }
 
+    public Course getCourseById(Integer id){
+        return courseRepository.getCourseById(id);
+    }
+
 }

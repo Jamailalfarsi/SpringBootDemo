@@ -24,7 +24,7 @@ public class GeneralController {
     SchoolService schoolService;
 
     @Autowired
-    CourseService CourseService;
+    CourseService courseService;
     @Autowired
     MarkRepository markService;
 
@@ -38,13 +38,6 @@ public class GeneralController {
         return schools;
     }
 
-    @RequestMapping(value="school/getById",method = RequestMethod.GET)
-    public School getSchoolById(@RequestParam Integer id){
-       // School school=new School();
-        School school=schoolService.getSchoolById(id);
-        return school;
-    }
-
     @RequestMapping(value="student/getAll",method= RequestMethod.GET)
     public List<Student> getAllStudents(){
         // List<School> schools=new ArrayList<>();
@@ -52,11 +45,13 @@ public class GeneralController {
         return students;
     }
 
+
+
     @RequestMapping(value="course/getAll",method= RequestMethod.GET)
     public List<Course> getAllCourses(){
         // List<School> schools=new ArrayList<>();
 
-        List<Course> courses=CourseService.getAllCourses();
+        List<Course> courses=courseService.getAllCourses();
         return courses;
     }
 
@@ -68,15 +63,34 @@ public class GeneralController {
         return marks;
     }
 
-//    @GetMapping(value = "addStudent")
-//    public void studentFunction() {
-//        studentService.addStudent();
-//    }
-//
-//    @GetMapping(value = "hello")
-//    public String hello() {
-//        return "Hello Jamail";
-//    }
+    @RequestMapping(value="school/getById",method = RequestMethod.GET)
+    public School getSchoolById(@RequestParam Integer id){
+        // School school=new School();
+        School school=schoolService.getSchoolById(id);
+        return school;
+    }
+    @RequestMapping(value="student/getById",method = RequestMethod.GET)
+    public Student getStudentById(@RequestParam Integer id) {
 
+        Student student = studentService.getStudentById(id);
+        return student;
+    }
+
+    @RequestMapping(value="mark/getById",method = RequestMethod.GET)
+    public Mark getMarkById(@RequestParam Integer id) {
+
+        Mark mark = markService.getMarkById(id);
+        return mark;
+    }
+
+
+    @RequestMapping(value="course/getById",method = RequestMethod.GET)
+    public Course getCourseById(@RequestParam Integer id){
+
+        Course course=courseService.getCourseById(id);
+        return course;
+    }
 
 }
+
+

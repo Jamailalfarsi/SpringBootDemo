@@ -5,6 +5,7 @@ import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface CourseRepository extends CrudRepository<Course,Integer> {
 
     @Query(value = "SELECT s from Course s")
     List<Course> getAllCourses();
+
+    @Query (value = "SELECT s from Course s where s.id = :id")
+    Course getCourseById(@Param("id")Integer id);
+
 }

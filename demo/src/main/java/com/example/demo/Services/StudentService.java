@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
+import com.example.demo.Repositories.SchoolRepository;
 import com.example.demo.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,12 @@ public class StudentService {
         return studentRepository.getAllStudents();
     }
 
-
+    public  Student getStudentById(Integer id){
+        return  studentRepository.getStudentById(id);
 
     }
+
+    }
+
+
 
