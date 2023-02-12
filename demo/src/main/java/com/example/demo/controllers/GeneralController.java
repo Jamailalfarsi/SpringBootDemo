@@ -40,7 +40,8 @@ public class GeneralController {
 
     @RequestMapping(value="school/getById",method = RequestMethod.GET)
     public School getSchoolById(@RequestParam Integer id){
-        School school=new School();
+       // School school=new School();
+        School school=schoolService.getSchoolById(id);
         return school;
     }
 

@@ -16,7 +16,8 @@ public class SchoolService {
         return schoolRepository.getAllSchools();
     }
     public  School getSchoolById(Integer id){
-        School school = new School();
-        return school;
+        return  schoolRepository.getSchoolById(id);
+
     }
+
 }
