@@ -15,4 +15,8 @@ public class SchoolService {
     public List<School> getAllSchools(){
         return schoolRepository.getAllSchools();
     }
+    public  School getSchoolById(Integer id){
+        School school = new School();
+        return school;
+    }
 }
