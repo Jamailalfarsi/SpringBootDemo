@@ -100,10 +100,19 @@ public class GeneralController {
         return student;
     }
 
+
+
     @RequestMapping(value="course/getByName",method=RequestMethod.GET)
     public Course getCourseByName(@RequestParam String course_name){
         Course course=courseService.getByCourseName(course_name);
         return course;
+    }
+
+    @RequestMapping(value = "student/getStudentsBySchoolName", method = RequestMethod.GET)
+    public List<Student> getStudentsBySchoolName(@RequestParam String schoolName) {
+
+        return studentService.getStudentsBySchoolName(schoolName);
+
     }
 
 

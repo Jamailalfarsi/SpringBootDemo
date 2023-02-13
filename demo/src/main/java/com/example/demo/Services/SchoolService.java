@@ -20,6 +20,7 @@ public class SchoolService {
 
     }
     public School getBySchoolName( String school_name){
+
         return schoolRepository.getBySchoolName(school_name);
     }
 

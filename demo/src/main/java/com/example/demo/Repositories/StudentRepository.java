@@ -24,5 +24,8 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query (value = "SELECT s from Student s where s.name = :name")
     Student getByStudentName(@Param("name")String student_name);
 
+    @Query(value = "SELECT st from Student st " +
+            "WHERE st.school.id = :id ")
+    List<Student> getStudentsBySchoolId(@Param("id") Integer id);
 
 }

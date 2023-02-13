@@ -15,6 +15,9 @@ public class StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    SchoolRepository schoolRepository;
 //    public void addStudent(){
 //        Student student=new Student();
 //        student.setName("Muzzamil Arif");
@@ -33,6 +36,17 @@ public class StudentService {
     public Student getByStudentName(String student_name){
         return studentRepository.getByStudentName(student_name);
     }
+
+    public List<Student> getStudentsBySchoolName(String schoolName){
+        School school = schoolRepository.getBySchoolName(schoolName);
+        Integer schoolId = school.getId();
+        List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
+        return studentList;
+    }
+
+
+
+
 
     }
 
