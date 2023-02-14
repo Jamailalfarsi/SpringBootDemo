@@ -24,4 +24,17 @@ public class SchoolService {
         return schoolRepository.getBySchoolName(school_name);
     }
 
+    public List<School> getAllActiveSchools(){
+
+        return schoolRepository.getAllActiveSchools();
+    }
+
+    public List<School> getAllInActiveSchools(){
+
+        return schoolRepository.getAllInActiveSchools();
+    }
+
+
+
+
 }

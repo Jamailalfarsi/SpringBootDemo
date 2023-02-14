@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
+import com.example.demo.Models.School;
 import com.example.demo.Repositories.CourseRepository;
 import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Repositories.StudentRepository;
@@ -24,6 +25,11 @@ public class MarkService {
     public Mark getMarkById(Integer id){
         Mark mark= markRepository.getMarkById(id);
         return mark;
+    }
+
+    public List<Mark> getAllActiveMarks(){
+
+        return markRepository.getAllActiveMarks();
     }
 
 }

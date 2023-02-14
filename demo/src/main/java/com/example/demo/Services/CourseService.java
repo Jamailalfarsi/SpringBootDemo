@@ -26,6 +26,12 @@ public class CourseService {
 
     public Course getByCourseName( String course_name){
         return courseRepository.getByCourseName(course_name);
+
+
+    }
+    public List<Course> getAllActiveCourses(){
+
+        return courseRepository.getAllActiveCourses();
     }
 
 

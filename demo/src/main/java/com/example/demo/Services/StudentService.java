@@ -48,12 +48,15 @@ public class StudentService {
 //        Student studentToDelete = studentRepository.findById(id).delete();
 //        studentRepository.delete(studentToDelete);
 //    }
+public List<Student> getAllActiveStudents() {
+
+    return studentRepository.getAllActiveStudents();
+
+}
 
 
 
-
-
-    }
+}
 
 
 
