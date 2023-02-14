@@ -25,4 +25,10 @@ public class CourseController {
         List<Course>  InactiveCoursesList = courseService.getAllInActiveCourses();
         return InactiveCoursesList;
     }
+
+    @RequestMapping(value = "getAllCoursesByLastRow")
+    public List<Course> getLatestRow() {
+        List<Course> orderCoursesList = courseService.getLatestRow();
+        return orderCoursesList;
+    }
 }

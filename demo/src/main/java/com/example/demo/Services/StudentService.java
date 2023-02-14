@@ -56,6 +56,11 @@ public List<Student> getAllActiveStudents() {
         return studentRepository.getAllInActiveStudents();
     }
 
+    public List<Student> getLatestRow(){
+
+        return studentRepository.getLatestRow();
+    }
+
 
 
 

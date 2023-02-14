@@ -23,6 +23,9 @@ public interface MarkRepository extends CrudRepository<Mark,Integer> {
     List<Mark> getAllActiveMarks();
     @Query(value = "SELECT s from Mark s where s.isActive = false")
     List<Mark> getAllInActiveMarks();
+    @Query(value = "SELECT s from Mark s where s.id=(SELECT max(id) from Mark)")
+    List<Mark> getLatestRow();
+
 
 
 }

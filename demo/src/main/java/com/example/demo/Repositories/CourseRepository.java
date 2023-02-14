@@ -28,6 +28,8 @@ public interface CourseRepository extends CrudRepository<Course,Integer> {
     @Query(value = "SELECT s from Course s where s.isActive = false")
     List<Course> getAllInActiveCourses();
 
+    @Query(value = "SELECT s from Course s where s.id=(SELECT max(id) from Course)")
+    List<Course> getLatestRow();
 
 
 

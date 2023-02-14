@@ -36,6 +36,10 @@ public class MarkService {
 
         return markRepository.getAllInActiveMarks();
     }
+    public List<Mark> getLatestRow(){
+
+        return markRepository.getLatestRow();
+    }
 
 
 }

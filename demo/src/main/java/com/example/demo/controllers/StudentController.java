@@ -26,6 +26,11 @@ public class StudentController {
         List<Student>  InactiveStudentsList = studentService.getAllInActiveStudents();
         return InactiveStudentsList;
     }
+    @RequestMapping(value = "getAllStudentByLastRow")
+    public List<Student> getLatestRow() {
+        List<Student> orderStudentsList = studentService.getLatestRow();
+        return orderStudentsList;
+    }
 
 
 

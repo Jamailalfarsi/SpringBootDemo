@@ -25,7 +25,7 @@ public class SchoolController {
         List<School>  InactiveSchoolsList = schoolService.getAllInActiveSchools();
         return InactiveSchoolsList;
     }
-    @RequestMapping(value = "getAllSchoolByOrder")
+    @RequestMapping(value = "getAllSchoolByLastRow")
     public List<School> getLatestRow(){
         List<School>  orderSchoolsList = schoolService.getLatestRow();
         return orderSchoolsList;

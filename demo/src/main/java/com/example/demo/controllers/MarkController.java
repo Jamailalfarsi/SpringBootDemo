@@ -20,5 +20,10 @@ public class MarkController {
         List<Mark>  InactiveMarksList = markService.getAllInActiveMarks();
         return InactiveMarksList;
     }
+    @RequestMapping(value = "getAllMarkByLastRow")
+    public List<Mark> getLatestRow(){
+        List<Mark>  orderMarksList = markService.getLatestRow();
+        return orderMarksList;
+    }
 
 }

@@ -37,5 +37,9 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query(value = "SELECT s from Student s where s.isActive = false")
     List<Student> getAllInActiveStudents();
 
+    @Query(value = "SELECT s from Student s where s.id=(SELECT max(id) from Student)")
+    List<Student> getLatestRow();
+
+
 
 }
