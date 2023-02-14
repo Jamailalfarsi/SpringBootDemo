@@ -34,6 +34,12 @@ public class CourseService {
         return courseRepository.getAllActiveCourses();
     }
 
+    public List<Course> getAllInActiveCourses(){
+
+        return courseRepository.getAllInActiveCourses();
+    }
+
+
 
 
 

@@ -21,5 +21,8 @@ public interface MarkRepository extends CrudRepository<Mark,Integer> {
 
     @Query(value = "SELECT s from Mark s where s.isActive = true")
     List<Mark> getAllActiveMarks();
+    @Query(value = "SELECT s from Mark s where s.isActive = false")
+    List<Mark> getAllInActiveMarks();
+
 
 }

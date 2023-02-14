@@ -32,5 +32,11 @@ public class MarkService {
         return markRepository.getAllActiveMarks();
     }
 
+    public List<Mark> getAllInActiveMarks(){
+
+        return markRepository.getAllInActiveMarks();
+    }
+
+
 }
 

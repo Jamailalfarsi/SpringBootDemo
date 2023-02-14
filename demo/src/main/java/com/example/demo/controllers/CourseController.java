@@ -20,4 +20,9 @@ public class CourseController {
         List<Course>  activeCoursesList = courseService.getAllActiveCourses();
         return activeCoursesList;
     }
+    @RequestMapping(value = "getAllCourseByIsInActive")
+    public List<Course> getAllInActiveCourses(){
+        List<Course>  InactiveCoursesList = courseService.getAllInActiveCourses();
+        return InactiveCoursesList;
+    }
 }

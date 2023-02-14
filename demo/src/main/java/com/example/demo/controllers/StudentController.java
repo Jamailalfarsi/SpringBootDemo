@@ -21,6 +21,12 @@ public class StudentController {
         List<Student>  activeStudentsList = studentService.getAllActiveStudents();
         return activeStudentsList;
     }
+    @RequestMapping(value = "getAllStudentByIsInActive")
+    public List<Student> getAllInActiveStudents(){
+        List<Student>  InactiveStudentsList = studentService.getAllInActiveStudents();
+        return InactiveStudentsList;
+    }
+
 
 
 }
