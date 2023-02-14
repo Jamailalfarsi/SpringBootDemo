@@ -39,6 +39,16 @@ public class SchoolService {
         return schoolRepository.getLatestRow();
     }
 
+    public List<School> getLatestUpdated(){
+
+        return schoolRepository.getLatestUpdated();
+    }
+    public void deleteSchoolById(Integer id){
+        School schoolToDelete = schoolRepository.findById(id).get();
+        schoolRepository.delete(schoolToDelete);
+    }
+
+
 
 
 

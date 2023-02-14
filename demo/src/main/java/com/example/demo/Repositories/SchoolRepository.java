@@ -31,6 +31,13 @@ public interface SchoolRepository extends CrudRepository<School,Integer> {
     @Query(value = "SELECT s from School s where s.id=(SELECT max(id) from School)")
     List<School> getLatestRow();
 
+    @Query(value = "SELECT s from School s where s.updatedDate=(SELECT max(updatedDate) from School)")
+    List<School> getLatestUpdated();
+
+    @Query (value = "DELETE s from School s where s.id = :id")
+    School deleteSchoolById(@Param("id")Integer id);
+
+
 
 
 

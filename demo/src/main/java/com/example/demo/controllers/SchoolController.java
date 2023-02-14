@@ -3,7 +3,9 @@ package com.example.demo.controllers;
 import com.example.demo.Models.School;
 import com.example.demo.Services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +31,20 @@ public class SchoolController {
     public List<School> getLatestRow(){
         List<School>  orderSchoolsList = schoolService.getLatestRow();
         return orderSchoolsList;
+    }
+
+    @RequestMapping(value = "getAllSchoolByLastUpdate")
+    public List<School> getLatestUpdated() {
+        List<School> lastUpdateSchoolsList = schoolService.getLatestUpdated();
+        return lastUpdateSchoolsList;
+    }
+
+    @GetMapping(value = "deleteById")
+    public String deleteSchoolById(@RequestParam Integer id) {
+
+        schoolService.deleteSchoolById(id);
+        return "Record Deleted Successfully :)";
+
     }
 
 
