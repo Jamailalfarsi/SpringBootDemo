@@ -28,4 +28,7 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
             "WHERE st.school.id = :id ")
     List<Student> getStudentsBySchoolId(@Param("id") Integer id);
 
+//    @Query (value = "SELECT s from Student s where s.id = :id")
+//    Student deleteStudentById(@Param("id")Integer id);
+
 }

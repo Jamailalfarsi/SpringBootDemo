@@ -1,24 +1,38 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+
+@MappedSuperclass
 public class BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Integer id;
-    public Integer getId() {
-        return id;
+
+ @CreatedDate
+    Date cratedDate;
+ @UpdateTimestamp
+    Date updatedDate;
+    Boolean isActive;
+
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
+
+
+//    public Integer getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
 
 
@@ -30,7 +44,7 @@ public class BaseEntity {
         this.cratedDate = cratedDate;
     }
 
-    Date cratedDate;
+
 
     public Date getUpdatedDate() {
         return updatedDate;
@@ -40,5 +54,5 @@ public class BaseEntity {
         this.updatedDate = updatedDate;
     }
 
-    Date updatedDate;
+
 }

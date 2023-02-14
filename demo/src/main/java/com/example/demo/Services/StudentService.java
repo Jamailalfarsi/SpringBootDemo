@@ -42,7 +42,12 @@ public class StudentService {
         Integer schoolId = school.getId();
         List<Student> studentList = studentRepository.getStudentsBySchoolId(schoolId);
         return studentList;
+
     }
+//    public void deleteStudentById(Integer id){
+//        Student studentToDelete = studentRepository.findById(id).delete();
+//        studentRepository.delete(studentToDelete);
+//    }
 
 
 
