@@ -34,10 +34,10 @@ public class SchoolService {
         return schoolRepository.getAllInActiveSchools();
     }
 
-//    public List<School> getLatestRow(){
-//
-//        return schoolRepository.getLatestRow();
-//    }
+    public List<School> getLatestRow(){
+
+        return schoolRepository.getLatestRow();
+    }
 
 
 
