@@ -5,6 +5,10 @@ import com.example.demo.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -49,7 +53,12 @@ public class SchoolService {
         School schoolToDelete = schoolRepository.findById(id).get();
         schoolRepository.delete(schoolToDelete);
     }
-
+public void setCreateDateByUserInput(String stringDate,Integer id )throws ParseException{
+    DateFormat formatter  = new SimpleDateFormat("yyyy-MM-dd");
+    Date javaDate =formatter.parse(stringDate);
+    School school =schoolRepository.getSchoolById(id);
+    schoolRepository.save(school);
+}
 
 
 

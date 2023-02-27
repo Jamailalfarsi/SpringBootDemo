@@ -1,35 +1,35 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.School;
+import com.example.demo.RequestObject.SchoolRequestForCreateDataUpdate;
 import com.example.demo.Services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="school")
+@RequestMapping(value = "school")
 public class SchoolController {
     @Autowired
     SchoolService schoolService;
 
     @RequestMapping(value = "getAllSchoolByIsActive")
-    public List<School> getAllActiveSchools(){
-        List<School>  activeSchoolsList = schoolService.getAllActiveSchools();
+    public List<School> getAllActiveSchools() {
+        List<School> activeSchoolsList = schoolService.getAllActiveSchools();
         return activeSchoolsList;
     }
 
     @RequestMapping(value = "getAllSchoolByIsInActive")
-    public List<School> getAllInActiveSchools(){
-        List<School>  InactiveSchoolsList = schoolService.getAllInActiveSchools();
+    public List<School> getAllInActiveSchools() {
+        List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
         return InactiveSchoolsList;
     }
+
     @RequestMapping(value = "getAllSchoolByLastRow")
-    public List<School> getLatestRow(){
-        List<School>  orderSchoolsList = schoolService.getLatestRow();
+    public List<School> getLatestRow() {
+        List<School> orderSchoolsList = schoolService.getLatestRow();
         return orderSchoolsList;
     }
 
@@ -47,8 +47,11 @@ public class SchoolController {
 
     }
 
+    @RequestMapping(value = "updateCreateDateByUserInput", method = RequestMethod.POST)
+    public void setCreateDateByUserInput(@RequestBody SchoolRequestForCreateDataUpdate data) throws ParseException {
 
-
+        schoolService.setCreateDateByUserInput(data.getDate(), data.getId());
+    }
 
 
 }
