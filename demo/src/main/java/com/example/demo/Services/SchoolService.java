@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class SchoolService {
     @Autowired
     SchoolRepository schoolRepository;
@@ -43,6 +44,7 @@ public class SchoolService {
 
         return schoolRepository.getLatestUpdated();
     }
+
     public void deleteSchoolById(Integer id){
         School schoolToDelete = schoolRepository.findById(id).get();
         schoolRepository.delete(schoolToDelete);
