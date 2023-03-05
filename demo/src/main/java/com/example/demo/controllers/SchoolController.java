@@ -39,19 +39,43 @@ public class SchoolController {
         return lastUpdateSchoolsList;
     }
 
-    @GetMapping(value = "deleteById")
-    public String deleteSchoolById(@RequestParam Integer id) {
+//    @GetMapping(value = "deleteById")
+//    public String deleteSchoolById(@RequestParam Integer id) {
+//
+//        schoolService.deleteSchoolById(id);
+//        return "Record Deleted Successfully :)";
+//
+//    }
 
-        schoolService.deleteSchoolById(id);
-        return "Record Deleted Successfully :)";
-
-    }
-
-    @RequestMapping(value = "updateCreateDateByUserInput", method = RequestMethod.POST)
+    @RequestMapping(value = "updateCreateDateByUserInput")
     public void setCreateDateByUserInput(@RequestBody SchoolRequestForCreateDataUpdate data) throws ParseException {
 
         schoolService.setCreateDateByUserInput(data.getDate(), data.getId());
     }
+
+    @GetMapping(value = "deleteById")
+    public void deleteSchoolById(@RequestParam Integer id) {
+
+        schoolService.deleteSchoolById(id);
+       // return "Record Deleted Successfully :)";
+
+    }
+    @GetMapping(value = "deleteBySchoolName")
+    public void deleteBySchoolName(@RequestParam String school_name) {
+
+        schoolService.deleteBySchoolName(school_name);
+
+
+    }
+    @GetMapping(value = "deleteAll")
+    public void deleteAll() {
+        schoolService.deleteAll();
+
+    }
+
+
+
+
 
 
 }

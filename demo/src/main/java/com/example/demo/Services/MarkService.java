@@ -40,6 +40,25 @@ public class MarkService {
 
         return markRepository.getLatestRow();
     }
+//    public void deleteMarkById(Integer id){
+//        Mark markToDelete = markRepository.findById(id).get();
+//        markRepository.delete(markToDelete);
+//    }
+
+    public void deleteMarkById(Integer id){
+        Mark mark = markRepository.getMarkById(id);
+        mark.setActive(false);
+        markRepository.save(mark);
+    }
+
+    public void deleteAll(){
+        Iterable<Mark> marks= markRepository.findAll();
+        for(Mark mark:marks) {
+            mark.setActive(false);
+        }
+        markRepository.saveAll(marks);
+    }
+
 
 
 }

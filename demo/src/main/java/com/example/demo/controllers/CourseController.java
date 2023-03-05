@@ -4,7 +4,9 @@ import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
 import com.example.demo.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,13 +18,14 @@ public class CourseController {
     CourseService courseService;
 
     @RequestMapping(value = "getAllCourseByIsActive")
-    public List<Course> getAllActiveCourses(){
-        List<Course>  activeCoursesList = courseService.getAllActiveCourses();
+    public List<Course> getAllActiveCourses() {
+        List<Course> activeCoursesList = courseService.getAllActiveCourses();
         return activeCoursesList;
     }
+
     @RequestMapping(value = "getAllCourseByIsInActive")
-    public List<Course> getAllInActiveCourses(){
-        List<Course>  InactiveCoursesList = courseService.getAllInActiveCourses();
+    public List<Course> getAllInActiveCourses() {
+        List<Course> InactiveCoursesList = courseService.getAllInActiveCourses();
         return InactiveCoursesList;
     }
 
@@ -31,4 +34,21 @@ public class CourseController {
         List<Course> orderCoursesList = courseService.getLatestRow();
         return orderCoursesList;
     }
+//    @GetMapping(value = "deleteById")
+//    public String deleteCourseById(@RequestParam Integer id) {
+//
+//        courseService.deleteCourseById(id);
+//        return "Record Deleted Successfully :)";
+//
+//    }
+
+    @GetMapping(value = "deleteAll")
+    public void deleteAll() {
+        courseService.deleteAll();
+
+    }
+
+
+    
 }
+

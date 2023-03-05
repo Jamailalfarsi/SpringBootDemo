@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import com.example.demo.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,16 +50,36 @@ public class SchoolService {
         return schoolRepository.getLatestUpdated();
     }
 
-    public void deleteSchoolById(Integer id){
-        School schoolToDelete = schoolRepository.findById(id).get();
-        schoolRepository.delete(schoolToDelete);
-    }
+//    public void deleteSchoolById(Integer id){
+//        School schoolToDelete = schoolRepository.findById(id).get();
+//        schoolRepository.delete(schoolToDelete);
+//    }
 public void setCreateDateByUserInput(String stringDate,Integer id )throws ParseException{
     DateFormat formatter  = new SimpleDateFormat("yyyy-MM-dd");
     Date javaDate =formatter.parse(stringDate);
     School school =schoolRepository.getSchoolById(id);
     schoolRepository.save(school);
 }
+
+    public void deleteSchoolById(Integer id){
+        School school = schoolRepository.getSchoolById(id);
+        school.setActive(false);
+        schoolRepository.save(school);
+    }
+
+    public void deleteBySchoolName(String school_name){
+        School school = schoolRepository. getBySchoolName(school_name);
+        school.setActive(false);
+        schoolRepository.save(school);
+    }
+
+    public void deleteAll(){
+        Iterable<School> schools= schoolRepository.findAll();
+        for(School school:schools) {
+            school.setActive(false);
+        }
+        schoolRepository.saveAll(schools);
+    }
 
 
 

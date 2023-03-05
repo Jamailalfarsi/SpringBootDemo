@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Models.Course;
+import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import com.example.demo.Repositories.CourseRepository;
@@ -43,6 +44,33 @@ public class CourseService {
 
         return courseRepository.getLatestRow();
     }
+
+//    public void deleteCourseById(Integer id){
+//        Course courseToDelete = courseRepository.findById(id).get();
+//        courseRepository.delete(courseToDelete);
+//    }
+
+    public void deleteCourselById(Integer id){
+        Course course = courseRepository.getCourseById(id);
+        course.setActive(false);
+        courseRepository.save(course);
+    }
+
+    public void deleteByCourseName(String course_name){
+        Course course = courseRepository. getByCourseName(course_name);
+        course.setActive(false);
+        courseRepository.save(course);
+    }
+
+    public void deleteAll(){
+        Iterable<Course> courses= courseRepository.findAll();
+        for(Course course:courses) {
+            course.setActive(false);
+        }
+        courseRepository.saveAll(courses);
+
+    }
+
 
 
 

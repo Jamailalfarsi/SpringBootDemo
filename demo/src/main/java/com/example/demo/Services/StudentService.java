@@ -61,6 +61,38 @@ public List<Student> getAllActiveStudents() {
         return studentRepository.getLatestRow();
     }
 
+//    public void deleteStudentById(Integer id){
+//        Student studentToDelete = studentRepository.findById(id).get();
+//        studentRepository.delete(studentToDelete);
+//    }
+
+    public void deleteStudentById(Integer id){
+        Student student = studentRepository.getStudentById(id);
+        student.setActive(false);
+        studentRepository.save(student);
+    }
+
+    public void deleteByStudentName(String student_name){
+        Student student = studentRepository. getByStudentName(student_name);
+        student.setActive(false);
+        studentRepository.save(student);
+    }
+
+    public void deleteAll(){
+        Iterable<Student> students= studentRepository.findAll();
+        for(Student student:students) {
+            student.setActive(false);
+        }
+        studentRepository.saveAll(students);
+    }
+
+
+
+
+
+
+
+
 
 
 

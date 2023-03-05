@@ -4,7 +4,9 @@ import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +26,26 @@ public class MarkController {
     public List<Mark> getLatestRow(){
         List<Mark>  orderMarksList = markService.getLatestRow();
         return orderMarksList;
+    }
+//    @GetMapping(value = "deleteById")
+//    public String deleteMarkById(@RequestParam Integer id) {
+//
+//        markService.deleteMarkById(id);
+//        return "Record Deleted Successfully :)";
+//
+//    }
+
+    @GetMapping(value = "deleteById")
+    public void deleteMarkById(@RequestParam Integer id) {
+
+        markService.deleteMarkById(id);
+
+    }
+
+    @GetMapping(value = "deleteAll")
+    public void deleteAll() {
+        markService.deleteAll();
+
     }
 
 }
