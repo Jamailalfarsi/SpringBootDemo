@@ -1,13 +1,12 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Models.School;
-import com.example.demo.Models.Student;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -33,9 +32,12 @@ public interface SchoolRepository extends CrudRepository<School,Integer> {
 
     @Query(value = "SELECT s from School s where s.updatedDate=(SELECT max(updatedDate) from School)")
     List<School> getLatestUpdated();
-
+    @Query(value = "SELECT s from School s where s.cratedDate> :cratedDate")
+    List<School> getSchoolCreatedAfterDate(@Param("cratedDate")Date cratedDate);
 //    @Query (value = "DELETE s from School s where s.id = :id")
 //    School deleteSchoolById(@Param("id")Integer id);
+
+
 
 
 

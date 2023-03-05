@@ -72,6 +72,11 @@ public class SchoolController {
         schoolService.deleteAll();
 
     }
+    public List <School> getSchoolCreatedAfterDate (@RequestParam String cratedDate) throws ParseException {
+        List <School> schools= schoolService.getSchoolCreatedAfterDate(cratedDate);
+       return schools;
+    }
+
 
 
 
