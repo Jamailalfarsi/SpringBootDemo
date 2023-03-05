@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -19,15 +20,17 @@ public class StudentController {
     StudentService studentService;
 
     @RequestMapping(value = "getAllStudentByIsActive")
-    public List<Student> getAllActiveSchools(){
-        List<Student>  activeStudentsList = studentService.getAllActiveStudents();
+    public List<Student> getAllActiveSchools() {
+        List<Student> activeStudentsList = studentService.getAllActiveStudents();
         return activeStudentsList;
     }
+
     @RequestMapping(value = "getAllStudentByIsInActive")
-    public List<Student> getAllInActiveStudents(){
-        List<Student>  InactiveStudentsList = studentService.getAllInActiveStudents();
+    public List<Student> getAllInActiveStudents() {
+        List<Student> InactiveStudentsList = studentService.getAllInActiveStudents();
         return InactiveStudentsList;
     }
+
     @RequestMapping(value = "getAllStudentByLastRow")
     public List<Student> getLatestRow() {
         List<Student> orderStudentsList = studentService.getLatestRow();
@@ -40,6 +43,7 @@ public class StudentController {
         studentService.deleteStudentById(id);
 
     }
+
     @GetMapping(value = "deleteByStudentName")
     public void deleteByStudentName(@RequestParam String student_name) {
 
@@ -53,5 +57,11 @@ public class StudentController {
 
     }
 
+    @GetMapping(value = "studentCreatedAfterDate")
+    public List<Student> getStudentCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
+        List<Student> students = studentService.getStudentCreatedAfterDate(cratedDate);
+        return students;
 
+
+    }
 }

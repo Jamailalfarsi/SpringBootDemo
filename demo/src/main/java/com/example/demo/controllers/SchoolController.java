@@ -72,6 +72,8 @@ public class SchoolController {
         schoolService.deleteAll();
 
     }
+
+    @GetMapping(value="schoolCreatedAfterDate")
     public List <School> getSchoolCreatedAfterDate (@RequestParam String cratedDate) throws ParseException {
         List <School> schools= schoolService.getSchoolCreatedAfterDate(cratedDate);
        return schools;
