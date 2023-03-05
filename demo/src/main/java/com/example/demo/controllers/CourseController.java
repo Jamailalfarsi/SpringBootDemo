@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -48,7 +49,11 @@ public class CourseController {
 
     }
 
+    @GetMapping(value = "courseCreatedAfterDate")
+    public List<Course> getCourseCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
+        List<Course> courses = courseService.getCourseCreatedAfterDate(cratedDate);
+        return courses;
 
-
+    }
 }
 
