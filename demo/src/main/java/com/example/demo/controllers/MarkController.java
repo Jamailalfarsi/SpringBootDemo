@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -18,13 +19,14 @@ public class MarkController {
     MarkService markService;
 
     @RequestMapping(value = "getAllMarkByIsInActive")
-    public List<Mark> getAllInActiveMarks(){
-        List<Mark>  InactiveMarksList = markService.getAllInActiveMarks();
+    public List<Mark> getAllInActiveMarks() {
+        List<Mark> InactiveMarksList = markService.getAllInActiveMarks();
         return InactiveMarksList;
     }
+
     @RequestMapping(value = "getAllMarkByLastRow")
-    public List<Mark> getLatestRow(){
-        List<Mark>  orderMarksList = markService.getLatestRow();
+    public List<Mark> getLatestRow() {
+        List<Mark> orderMarksList = markService.getLatestRow();
         return orderMarksList;
     }
 //    @GetMapping(value = "deleteById")
@@ -48,4 +50,11 @@ public class MarkController {
 
     }
 
+    @GetMapping(value = "markCreatedAfterDate")
+    public List<Mark> getMarkCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
+        List<Mark> marks = markService.getMarkCreatedAfterDate(cratedDate);
+        return marks;
+
+
+    }
 }

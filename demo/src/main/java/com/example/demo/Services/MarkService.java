@@ -9,6 +9,10 @@ import com.example.demo.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -57,6 +61,13 @@ public class MarkService {
             mark.setActive(false);
         }
         markRepository.saveAll(marks);
+    }
+
+    public List<Mark> getMarkCreatedAfterDate(String cratedDate) throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(cratedDate);
+        List<Mark> marks = markRepository.getMarkCreatedAfterDate(javaDate);
+        return marks;
     }
 
 
