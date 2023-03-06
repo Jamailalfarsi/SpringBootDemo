@@ -4,10 +4,7 @@ import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -54,7 +51,10 @@ public class MarkController {
     public List<Mark> getMarkCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
         List<Mark> marks = markService.getMarkCreatedAfterDate(cratedDate);
         return marks;
-
-
+    }
+    @RequestMapping(value="getMarkByCreatedDate",method = RequestMethod.GET)
+    public Mark getMarkByCreatedDate(@RequestParam String cratedDate){
+        Mark mark=markService.getMarkByCreatedDate(cratedDate);
+        return mark;
     }
 }

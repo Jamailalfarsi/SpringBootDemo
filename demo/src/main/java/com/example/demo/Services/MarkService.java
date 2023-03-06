@@ -70,6 +70,11 @@ public class MarkService {
         return marks;
     }
 
+    public Mark getMarkByCreatedDate(String cratedDate) {
+
+        return markRepository.getMarkByCreatedDate(cratedDate);
+    }
+
 
 
 }

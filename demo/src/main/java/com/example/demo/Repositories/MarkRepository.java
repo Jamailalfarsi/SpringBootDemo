@@ -30,6 +30,9 @@ public interface MarkRepository extends CrudRepository<Mark,Integer> {
     @Query(value = "SELECT s from Mark s where s.cratedDate> :cratedDate")
     List<Mark> getMarkCreatedAfterDate(@Param("cratedDate") Date cratedDate);
 
+    @Query(value = "SELECT s from Mark s where s.cratedDate= :cratedDate")
+    Mark getMarkByCreatedDate(@Param("cratedDate")String cratedDate);
+
 
 
 }
