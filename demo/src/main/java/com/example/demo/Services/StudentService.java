@@ -118,7 +118,14 @@ public List<Student> getAllActiveStudents() {
         student.setActive(false);
         studentRepository.save(student);
     }
-   
+    public void deleteStudentByUpdatedDate(String updatedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(updatedDate);
+        Student student = studentRepository.getStudentByUpdatedDate(javaDate);
+        student.setActive(false);
+        studentRepository.save(student);
+    }
+
 
 
 
