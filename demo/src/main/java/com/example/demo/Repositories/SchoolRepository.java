@@ -40,6 +40,9 @@ public interface SchoolRepository extends CrudRepository<School,Integer> {
 //    @Query (value = "DELETE s from School s where s.id = :id")
 //    School deleteSchoolById(@Param("id")Integer id);
 
+    @Query(value = "SELECT s from School s where s.updatedDate= :updatedDate")
+    School getSchoolByUpdatedDate(@Param("updatedDate")String updatedDate);
+
 
 
 

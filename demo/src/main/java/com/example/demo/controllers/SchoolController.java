@@ -85,6 +85,12 @@ public class SchoolController {
         return school;
     }
 
+    @RequestMapping(value="getSchoolByUpdatedDate",method = RequestMethod.GET)
+    public School getSchoolByUpdatedDate(@RequestParam String updatedDate){
+        School school=schoolService.getSchoolByUpdatedDate(updatedDate);
+        return school;
+    }
+
 
 
 

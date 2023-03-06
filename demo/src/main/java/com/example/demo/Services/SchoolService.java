@@ -94,6 +94,10 @@ public class SchoolService {
 
         return schoolRepository.getSchoolByCreatedDate(cratedDate);
     }
+    public School getSchoolByUpdatedDate(String updatedDate) {
+
+        return schoolRepository.getSchoolByUpdatedDate(updatedDate);
+    }
 
 
 }
