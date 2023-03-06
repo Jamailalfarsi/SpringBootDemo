@@ -57,4 +57,9 @@ public class MarkController {
         Mark mark=markService.getMarkByCreatedDate(cratedDate);
         return mark;
     }
+    @RequestMapping(value="getMarkByUpdatedDate",method = RequestMethod.GET)
+    public Mark getMarkByUpdatedDate(@RequestParam String updatedDate){
+        Mark mark=markService.getMarkByUpdatedDate(updatedDate);
+        return mark;
+    }
 }

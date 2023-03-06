@@ -74,6 +74,10 @@ public class MarkService {
 
         return markRepository.getMarkByCreatedDate(cratedDate);
     }
+    public Mark getMarkByUpdatedDate(String updatedDate) {
+
+        return markRepository.getMarkByUpdatedDate(updatedDate);
+    }
 
 
 
