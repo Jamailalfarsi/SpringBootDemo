@@ -94,6 +94,14 @@ public class CourseService {
         course.setActive(false);
         courseRepository.save(course);
     }
+    public void deleteCourseByUpdatedDate(String updatedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(updatedDate);
+        Course course = courseRepository.getCourseByUpdatedDate(javaDate);
+        course.setActive(false);
+        courseRepository.save(course);
+    }
+
 
 
 
