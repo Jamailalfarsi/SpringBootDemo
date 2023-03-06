@@ -85,6 +85,10 @@ public class CourseService {
 
         return courseRepository.getCourseByCreatedDate(cratedDate);
     }
+    public Course getCourseByUpdatedDate(String updatedDate) {
+
+        return courseRepository.getCourseByUpdatedDate(updatedDate);
+    }
 
 
 

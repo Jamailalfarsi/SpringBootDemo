@@ -57,5 +57,10 @@ public class CourseController {
         Course course=courseService.getCourseByCreatedDate(cratedDate);
         return course;
     }
+    @RequestMapping(value="getCourseByUpdatedDate",method = RequestMethod.GET)
+    public Course getCourseByUpdatedDate(@RequestParam String updatedDate){
+        Course course=courseService.getCourseByUpdatedDate(updatedDate);
+        return course;
+    }
 }
 
