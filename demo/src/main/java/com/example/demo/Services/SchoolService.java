@@ -103,6 +103,13 @@ public class SchoolService {
         school.setActive(false);
         schoolRepository.save(school);
     }
+    public void deleteSchoolsByUpdatedDate(String updatedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(updatedDate);
+        School school = schoolRepository.getSchoolByUpdatedDate(javaDate);
+        school.setActive(false);
+        schoolRepository.save(school);
+    }
 
 
 

@@ -64,5 +64,10 @@ public class CourseController {
         Course course=courseService.getCourseByUpdatedDate(updatedDate);
         return course;
     }
+    @RequestMapping(value = "deleteCourseByCreatedDate", method = RequestMethod.POST)
+    public void deleteCourseByCreatedDate(@RequestParam String cratedDate) throws ParseException {
+        courseService.deleteCourseByCreatedDate(cratedDate);
+
+    }
 }
 

@@ -71,10 +71,20 @@ public class MarkService {
     }
 
     public Mark getMarkByCreatedDate(Date cratedDate) {
+
         return markRepository.getMarkByCreatedDate(cratedDate);
     }
     public Mark getMarkByUpdatedDate(Date updatedDate) {
+
         return markRepository.getMarkByUpdatedDate(updatedDate);
+    }
+
+    public void deleteMarkByCreatedDate(String cratedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(cratedDate);
+        Mark mark= markRepository.getMarkByCreatedDate(javaDate);
+        mark.setActive(false);
+        markRepository.save(mark);
     }
 
 

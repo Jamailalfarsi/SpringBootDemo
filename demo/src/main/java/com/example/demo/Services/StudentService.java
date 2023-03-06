@@ -118,6 +118,7 @@ public List<Student> getAllActiveStudents() {
         student.setActive(false);
         studentRepository.save(student);
     }
+   
 
 
 

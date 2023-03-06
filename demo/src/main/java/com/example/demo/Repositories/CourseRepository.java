@@ -37,7 +37,7 @@ public interface CourseRepository extends CrudRepository<Course,Integer> {
 
     @Query(value = "SELECT s from Course s where s.cratedDate= :cratedDate")
     Course getCourseByCreatedDate(@Param("cratedDate")Date cratedDate);
-    @Query(value = "SELECT s from School s where s.updatedDate= :updatedDate")
+    @Query(value = "SELECT s from Course s where s.updatedDate= :updatedDate")
     Course getCourseByUpdatedDate(@Param("updatedDate")Date updatedDate);
 
 
