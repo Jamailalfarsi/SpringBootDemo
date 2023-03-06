@@ -111,6 +111,14 @@ public List<Student> getAllActiveStudents() {
         return studentRepository.getStudentByAge(age);
     }
 
+    public void deleteStudentByCreatedDate(String cratedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(cratedDate);
+        Student student = studentRepository.getStudentByCreatedDate(javaDate);
+        student.setActive(false);
+        studentRepository.save(student);
+    }
+
 
 
 

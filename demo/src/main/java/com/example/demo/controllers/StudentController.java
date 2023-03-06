@@ -79,4 +79,9 @@ public class StudentController {
         Student student=studentService.getStudentByAge(age);
         return student;
     }
+    @RequestMapping(value = "deleteStudentsByCreatedDate", method = RequestMethod.POST)
+    public void deleteStudentsByCreatedDate(@RequestParam String cratedDate) throws ParseException {
+        studentService.deleteStudentByCreatedDate(cratedDate);
+
+    }
 }
