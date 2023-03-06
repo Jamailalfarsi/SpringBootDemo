@@ -74,5 +74,10 @@ public class CourseController {
         courseService.deleteCourseByUpdatedDate(updatedDate);
 
     }
+    @RequestMapping(value = "createCourse", method = RequestMethod.POST)
+    public void createCourse(@RequestParam String course_name) {
+        courseService.createCourse(course_name);
+    }
+
 }
 

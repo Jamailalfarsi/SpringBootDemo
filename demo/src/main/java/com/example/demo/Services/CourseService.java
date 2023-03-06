@@ -101,6 +101,13 @@ public class CourseService {
         course.setActive(false);
         courseRepository.save(course);
     }
+    public void  createCourse(String course_name) {
+        Course course=new Course();
+        course.setName(course_name);
+        course.setActive(true);
+        course.setCratedDate(new Date());
+        courseRepository.save(course);
+    }
 
 
 
