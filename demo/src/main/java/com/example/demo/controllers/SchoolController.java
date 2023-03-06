@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -80,16 +81,22 @@ public class SchoolController {
     }
 
     @RequestMapping(value="getSchoolByCreatedDate",method = RequestMethod.GET)
-    public School getSchoolByCreatedDate(@RequestParam String cratedDate){
+    public School getSchoolByCreatedDate(@RequestParam Date cratedDate){
         School school=schoolService.getSchoolByCreatedDate(cratedDate);
         return school;
     }
 
     @RequestMapping(value="getSchoolByUpdatedDate",method = RequestMethod.GET)
-    public School getSchoolByUpdatedDate(@RequestParam String updatedDate){
+    public School getSchoolByUpdatedDate(@RequestParam Date updatedDate){
         School school=schoolService.getSchoolByUpdatedDate(updatedDate);
         return school;
     }
+    @RequestMapping(value = "deleteSchoolsByCreatedDate", method = RequestMethod.POST)
+    public void deleteSchoolsByCreatedDate(@RequestParam String cratedDate) throws ParseException {
+       schoolService.deleteSchoolsByCreatedDate(cratedDate);
+
+    }
+
 
 
 

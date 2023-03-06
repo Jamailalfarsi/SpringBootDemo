@@ -90,14 +90,20 @@ public class SchoolService {
         return schools;
     }
 
-    public School getSchoolByCreatedDate(String cratedDate) {
-
+    public School getSchoolByCreatedDate(Date cratedDate) {
         return schoolRepository.getSchoolByCreatedDate(cratedDate);
     }
-    public School getSchoolByUpdatedDate(String updatedDate) {
-
+    public School getSchoolByUpdatedDate(Date updatedDate) {
         return schoolRepository.getSchoolByUpdatedDate(updatedDate);
     }
+    public void deleteSchoolsByCreatedDate(String cratedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(cratedDate);
+        School school = schoolRepository.getSchoolByCreatedDate(javaDate);
+        school.setActive(false);
+        schoolRepository.save(school);
+    }
+
 
 
 }

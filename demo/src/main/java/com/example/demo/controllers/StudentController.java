@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -63,13 +64,19 @@ public class StudentController {
     }
 
     @RequestMapping(value="getStudentByCreatedDate",method = RequestMethod.GET)
-    public Student getStudentByCreatedDate(@RequestParam String cratedDate){
+    public Student getStudentByCreatedDate(@RequestParam Date cratedDate){
         Student student=studentService.getStudentByCreatedDate(cratedDate);
         return student;
     }
+
     @RequestMapping(value="getStudentByUpdatedDate",method = RequestMethod.GET)
-    public Student getStudentByUpdatedDate(@RequestParam String updatedDate){
+    public Student getStudentByUpdatedDate(@RequestParam Date updatedDate){
         Student student=studentService.getStudentByUpdatedDate(updatedDate);
+        return student;
+    }
+    @RequestMapping(value="getStudentByAge",method = RequestMethod.GET)
+    public Student getStudentByAge(@RequestParam Integer age){
+        Student student=studentService.getStudentByAge(age);
         return student;
     }
 }

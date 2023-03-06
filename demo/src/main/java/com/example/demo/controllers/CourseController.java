@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -53,12 +54,13 @@ public class CourseController {
 
     }
     @RequestMapping(value="getCourseByCreatedDate",method = RequestMethod.GET)
-    public Course getCourseByCreatedDate(@RequestParam String cratedDate){
+    public Course getCourseByCreatedDate(@RequestParam Date cratedDate){
         Course course=courseService.getCourseByCreatedDate(cratedDate);
         return course;
     }
-    @RequestMapping(value="getCourseByUpdatedDate",method = RequestMethod.GET)
-    public Course getCourseByUpdatedDate(@RequestParam String updatedDate){
+
+    @RequestMapping(value="getSchoolByUpdatedDate",method = RequestMethod.GET)
+    public Course getCourseByUpdatedDate(@RequestParam Date updatedDate){
         Course course=courseService.getCourseByUpdatedDate(updatedDate);
         return course;
     }

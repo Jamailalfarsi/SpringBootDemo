@@ -45,10 +45,13 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     List<Student> getStudentCreatedAfterDate(@Param("cratedDate") Date cratedDate);
 
     @Query(value = "SELECT s from Student s where s.cratedDate= :cratedDate")
-    Student getStudentByCreatedDate(@Param("cratedDate")String cratedDate);
+    Student getStudentByCreatedDate(@Param("cratedDate")Date cratedDate);
 
     @Query(value = "SELECT s from Student s where s.updatedDate= :updatedDate")
-    Student getStudentByUpdatedDate(@Param("updatedDate")String updatedDate);
+    Student getStudentByUpdatedDate(@Param("updatedDate")Date updatedDate);
+
+    @Query (value = "SELECT s from Student s where s.age = :age")
+    Student getStudentByAge(@Param("age")Integer age);
 
 
 

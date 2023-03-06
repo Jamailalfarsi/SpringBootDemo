@@ -98,13 +98,17 @@ public List<Student> getAllActiveStudents() {
     }
 
 
-    public Student getStudentByCreatedDate(String cratedDate) {
+    public Student getStudentByCreatedDate(Date cratedDate) {
 
         return studentRepository.getStudentByCreatedDate(cratedDate);
     }
-    public Student getStudentByUpdatedDate(String updatedDate) {
+    public Student getStudentByUpdatedDate(Date updatedDate) {
 
         return studentRepository.getStudentByUpdatedDate(updatedDate);
+    }
+    public Student getStudentByAge(Integer age) {
+
+        return studentRepository.getStudentByAge(age);
     }
 
 

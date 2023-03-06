@@ -70,12 +70,10 @@ public class MarkService {
         return marks;
     }
 
-    public Mark getMarkByCreatedDate(String cratedDate) {
-
+    public Mark getMarkByCreatedDate(Date cratedDate) {
         return markRepository.getMarkByCreatedDate(cratedDate);
     }
-    public Mark getMarkByUpdatedDate(String updatedDate) {
-
+    public Mark getMarkByUpdatedDate(Date updatedDate) {
         return markRepository.getMarkByUpdatedDate(updatedDate);
     }
 

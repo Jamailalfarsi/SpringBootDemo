@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -53,12 +54,13 @@ public class MarkController {
         return marks;
     }
     @RequestMapping(value="getMarkByCreatedDate",method = RequestMethod.GET)
-    public Mark getMarkByCreatedDate(@RequestParam String cratedDate){
+    public Mark getMarkByCreatedDate(@RequestParam Date cratedDate){
         Mark mark=markService.getMarkByCreatedDate(cratedDate);
         return mark;
     }
-    @RequestMapping(value="getMarkByUpdatedDate",method = RequestMethod.GET)
-    public Mark getMarkByUpdatedDate(@RequestParam String updatedDate){
+
+    @RequestMapping(value="getSchoolByUpdatedDate",method = RequestMethod.GET)
+    public Mark getMarkByUpdatedDate(@RequestParam Date updatedDate){
         Mark mark=markService.getMarkByUpdatedDate(updatedDate);
         return mark;
     }
