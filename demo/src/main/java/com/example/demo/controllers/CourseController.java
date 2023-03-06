@@ -4,10 +4,7 @@ import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
 import com.example.demo.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -54,6 +51,11 @@ public class CourseController {
         List<Course> courses = courseService.getCourseCreatedAfterDate(cratedDate);
         return courses;
 
+    }
+    @RequestMapping(value="getCourseByCreatedDate",method = RequestMethod.GET)
+    public Course getCourseByCreatedDate(@RequestParam String cratedDate){
+        Course course=courseService.getCourseByCreatedDate(cratedDate);
+        return course;
     }
 }
 

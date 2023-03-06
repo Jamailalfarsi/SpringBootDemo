@@ -81,6 +81,10 @@ public class CourseService {
         List<Course> courses = courseRepository.getCourseCreatedAfterDate(javaDate);
         return courses;
     }
+    public Course getCourseByCreatedDate(String cratedDate) {
+
+        return courseRepository.getCourseByCreatedDate(cratedDate);
+    }
 
 
 
