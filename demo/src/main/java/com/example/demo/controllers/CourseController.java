@@ -41,13 +41,13 @@ public class CourseController {
 //
 //    }
 
-    @GetMapping(value = "deleteAll")
+    @RequestMapping(value = "deleteAll")
     public void deleteAll() {
         courseService.deleteAll();
 
     }
 
-    @GetMapping(value = "courseCreatedAfterDate")
+    @RequestMapping(value = "courseCreatedAfterDate")
     public List<Course> getCourseCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
         List<Course> courses = courseService.getCourseCreatedAfterDate(cratedDate);
         return courses;
