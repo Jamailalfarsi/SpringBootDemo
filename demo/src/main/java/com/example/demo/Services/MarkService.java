@@ -93,6 +93,14 @@ public class MarkService {
         mark.setActive(false);
         markRepository.save(mark);
     }
+    public void  createMark(String grade,Integer obtainedMark) {
+        Mark mark=new Mark();
+        mark.setGrade(grade);
+        mark.setObtainedMark(obtainedMark);
+        mark.setActive(true);
+        mark.setCratedDate(new Date());
+        markRepository.save(mark);
+    }
 
 
 

@@ -74,4 +74,9 @@ public class MarkController {
         markService.deleteMarkByUpdatedDate(updatedDate);
 
     }
+    @RequestMapping(value = "createMark", method = RequestMethod.POST)
+    public void createMark(@RequestParam String grade,Integer obtainedMark) {
+        markService.createMark(grade,obtainedMark);
+    }
+
 }
