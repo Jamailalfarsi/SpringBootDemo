@@ -67,4 +67,9 @@ public class StudentController {
         Student student=studentService.getStudentByCreatedDate(cratedDate);
         return student;
     }
+    @RequestMapping(value="getStudentByUpdatedDate",method = RequestMethod.GET)
+    public Student getStudentByUpdatedDate(@RequestParam String updatedDate){
+        Student student=studentService.getStudentByUpdatedDate(updatedDate);
+        return student;
+    }
 }

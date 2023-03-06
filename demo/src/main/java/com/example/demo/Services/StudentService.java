@@ -102,6 +102,10 @@ public List<Student> getAllActiveStudents() {
 
         return studentRepository.getStudentByCreatedDate(cratedDate);
     }
+    public Student getStudentByUpdatedDate(String updatedDate) {
+
+        return studentRepository.getStudentByUpdatedDate(updatedDate);
+    }
 
 
 
