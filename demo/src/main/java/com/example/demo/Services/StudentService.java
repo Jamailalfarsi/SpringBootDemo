@@ -98,7 +98,10 @@ public List<Student> getAllActiveStudents() {
     }
 
 
+    public Student getStudentByCreatedDate(String cratedDate) {
 
+        return studentRepository.getStudentByCreatedDate(cratedDate);
+    }
 
 
 

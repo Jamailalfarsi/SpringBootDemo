@@ -5,10 +5,7 @@ import com.example.demo.Models.Student;
 import com.example.demo.Services.SchoolService;
 import com.example.demo.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -63,5 +60,11 @@ public class StudentController {
         return students;
 
 
+    }
+
+    @RequestMapping(value="getStudentByCreatedDate",method = RequestMethod.GET)
+    public Student getStudentByCreatedDate(@RequestParam String cratedDate){
+        Student student=studentService.getStudentByCreatedDate(cratedDate);
+        return student;
     }
 }
