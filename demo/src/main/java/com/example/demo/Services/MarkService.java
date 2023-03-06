@@ -86,6 +86,14 @@ public class MarkService {
         mark.setActive(false);
         markRepository.save(mark);
     }
+    public void deleteMarkByUpdatedDate(String updatedDate) throws ParseException{
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date javaDate = formatter.parse(updatedDate);
+        Mark mark = markRepository.getMarkByUpdatedDate(javaDate);
+        mark.setActive(false);
+        markRepository.save(mark);
+    }
+
 
 
 

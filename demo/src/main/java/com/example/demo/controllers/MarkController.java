@@ -69,4 +69,9 @@ public class MarkController {
         markService.deleteMarkByCreatedDate(cratedDate);
 
     }
+    @RequestMapping(value = "deleteMarkByUpdatedDate", method = RequestMethod.POST)
+    public void deleteMarkByUpdatedDate(@RequestParam String updatedDate) throws ParseException {
+        markService.deleteMarkByUpdatedDate(updatedDate);
+
+    }
 }
