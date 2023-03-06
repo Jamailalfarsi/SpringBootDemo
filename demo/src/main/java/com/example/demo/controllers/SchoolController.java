@@ -79,6 +79,12 @@ public class SchoolController {
        return schools;
     }
 
+    @RequestMapping(value="getSchoolByCreatedDate",method = RequestMethod.GET)
+    public School getSchoolByCreatedDate(@RequestParam String cratedDate){
+        School school=schoolService.getSchoolByCreatedDate(cratedDate);
+        return school;
+    }
+
 
 
 

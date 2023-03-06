@@ -90,5 +90,10 @@ public class SchoolService {
         return schools;
     }
 
+    public School getSchoolByCreatedDate(String cratedDate) {
+
+        return schoolRepository.getSchoolByCreatedDate(cratedDate);
+    }
+
 
 }
