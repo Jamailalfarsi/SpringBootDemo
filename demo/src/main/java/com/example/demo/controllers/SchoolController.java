@@ -54,27 +54,27 @@ public class SchoolController {
         schoolService.setCreateDateByUserInput(data.getDate(), data.getId());
     }
 
-    @GetMapping(value = "deleteById")
+    @RequestMapping(value = "deleteById")
     public void deleteSchoolById(@RequestParam Integer id) {
 
         schoolService.deleteSchoolById(id);
        // return "Record Deleted Successfully :)";
 
     }
-    @GetMapping(value = "deleteBySchoolName")
+    @RequestMapping(value = "deleteBySchoolName")
     public void deleteBySchoolName(@RequestParam String school_name) {
 
         schoolService.deleteBySchoolName(school_name);
 
 
     }
-    @GetMapping(value = "deleteAll")
+    @RequestMapping(value = "deleteAll")
     public void deleteAll() {
         schoolService.deleteAll();
 
     }
 
-    @GetMapping(value="schoolCreatedAfterDate")
+    @RequestMapping(value="schoolCreatedAfterDate")
     public List <School> getSchoolCreatedAfterDate (@RequestParam String cratedDate) throws ParseException {
         List <School> schools= schoolService.getSchoolCreatedAfterDate(cratedDate);
        return schools;
@@ -101,6 +101,8 @@ public class SchoolController {
         schoolService.deleteSchoolsByUpdatedDate(updatedDate);
 
     }
+
+
 
 
 

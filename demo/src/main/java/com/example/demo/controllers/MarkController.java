@@ -35,20 +35,20 @@ public class MarkController {
 //
 //    }
 
-    @GetMapping(value = "deleteById")
+    @RequestMapping(value = "deleteById")
     public void deleteMarkById(@RequestParam Integer id) {
 
         markService.deleteMarkById(id);
 
     }
 
-    @GetMapping(value = "deleteAll")
+    @RequestMapping(value = "deleteAll")
     public void deleteAll() {
         markService.deleteAll();
 
     }
 
-    @GetMapping(value = "markCreatedAfterDate")
+    @RequestMapping(value = "markCreatedAfterDate")
     public List<Mark> getMarkCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
         List<Mark> marks = markService.getMarkCreatedAfterDate(cratedDate);
         return marks;

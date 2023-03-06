@@ -35,27 +35,27 @@ public class StudentController {
         return orderStudentsList;
     }
 
-    @GetMapping(value = "deleteById")
+    @RequestMapping(value = "deleteById")
     public void deleteStudentById(@RequestParam Integer id) {
 
         studentService.deleteStudentById(id);
 
     }
 
-    @GetMapping(value = "deleteByStudentName")
+    @RequestMapping(value = "deleteByStudentName")
     public void deleteByStudentName(@RequestParam String student_name) {
 
         studentService.deleteByStudentName(student_name);
 
     }
 
-    @GetMapping(value = "deleteAll")
+    @RequestMapping(value = "deleteAll")
     public void deleteAll() {
         studentService.deleteAll();
 
     }
 
-    @GetMapping(value = "studentCreatedAfterDate")
+    @RequestMapping(value = "studentCreatedAfterDate")
     public List<Student> getStudentCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
         List<Student> students = studentService.getStudentCreatedAfterDate(cratedDate);
         return students;
