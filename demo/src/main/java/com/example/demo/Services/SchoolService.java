@@ -110,6 +110,23 @@ public class SchoolService {
         school.setActive(false);
         schoolRepository.save(school);
     }
+    public void  createSchool(String school_name) {
+        School school=new School();
+        school.setName(school_name);
+        school.setActive(true);
+        school.setCratedDate(new Date());
+        schoolRepository.save(school);
+    }
+
+//    public void updateSchool(Integer id,String school_name),Boolean isActive){
+//        School school =schoolRepository.getSchoolById(id);
+//        school.setName(name);
+//        school.setCratedDate(new Date());
+//        school.setActive(true);
+//        schoolRepository.save(school);
+//    }
+
+
 
 
 

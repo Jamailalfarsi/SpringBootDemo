@@ -101,6 +101,15 @@ public class SchoolController {
         schoolService.deleteSchoolsByUpdatedDate(updatedDate);
 
     }
+    @RequestMapping(value = "createSchool", method = RequestMethod.POST)
+    public void createSchool(@RequestParam String school_name) {
+        schoolService.createSchool(school_name);
+    }
+
+//    @RequestMapping(value = "updateSchool",method = RequestMethod.POST)
+//    public void updateSchool(@RequestParam Integer id,String school_name,Boolean  isActive){
+//        schoolService.updateSchool(id, school_name, isActive);
+//    }
 
 
 

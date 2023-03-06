@@ -125,6 +125,13 @@ public List<Student> getAllActiveStudents() {
         student.setActive(false);
         studentRepository.save(student);
     }
+    public void  createStudent(String student_name) {
+        Student student=new Student();
+        student.setName(student_name);
+        student.setActive(true);
+        student.setCratedDate(new Date());
+        studentRepository.save(student);
+    }
 
 
 

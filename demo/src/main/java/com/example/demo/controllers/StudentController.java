@@ -89,4 +89,8 @@ public class StudentController {
         studentService.deleteStudentByUpdatedDate(updatedDate);
 
     }
+    @RequestMapping(value = "createStudent", method = RequestMethod.POST)
+    public void createStudent(@RequestParam String student_name) {
+        studentService.createStudent(student_name);
+    }
 }
