@@ -108,6 +108,13 @@ public class CourseService {
         course.setCratedDate(new Date());
         courseRepository.save(course);
     }
+    public void updateCourse(Integer id,String course_name,Boolean isActive){
+        Course course =courseRepository.getCourseById(id);
+        course.setName(course_name);
+        course.setCratedDate(new Date());
+        course.setActive(true);
+        courseRepository.save(course);
+    }
 
 
 

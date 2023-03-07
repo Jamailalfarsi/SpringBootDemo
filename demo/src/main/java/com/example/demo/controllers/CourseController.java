@@ -78,6 +78,10 @@ public class CourseController {
     public void createCourse(@RequestParam String course_name) {
         courseService.createCourse(course_name);
     }
+    @RequestMapping(value = "updateCourse",method = RequestMethod.POST)
+    public void updateCourse(@RequestParam Integer id,String course_name,Boolean  isActive){
+        courseService.updateCourse(id, course_name, isActive);
+    }
 
 }
 
