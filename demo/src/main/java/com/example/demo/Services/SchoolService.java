@@ -118,13 +118,13 @@ public class SchoolService {
         schoolRepository.save(school);
     }
 
-//    public void updateSchool(Integer id,String school_name),Boolean isActive){
-//        School school =schoolRepository.getSchoolById(id);
-//        school.setName(name);
-//        school.setCratedDate(new Date());
-//        school.setActive(true);
-//        schoolRepository.save(school);
-//    }
+    public void updateSchool(Integer id,String school_name,Boolean isActive){
+        School school =schoolRepository.getSchoolById(id);
+        school.setName(school_name);
+        school.setCratedDate(new Date());
+        school.setActive(true);
+        schoolRepository.save(school);
+    }
 
 
 
