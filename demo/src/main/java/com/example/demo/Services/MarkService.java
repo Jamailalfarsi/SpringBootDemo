@@ -101,6 +101,14 @@ public class MarkService {
         mark.setCratedDate(new Date());
         markRepository.save(mark);
     }
+    public void updateMark(Integer id,String grade,Integer obtainedMark,Boolean isActive){
+        Mark mark =markRepository.getMarkById(id);
+        mark.setGrade(grade);
+        mark.setObtainedMark(obtainedMark);
+        mark.setCratedDate(new Date());
+        mark.setActive(true);
+        markRepository.save(mark);
+    }
 
 
 

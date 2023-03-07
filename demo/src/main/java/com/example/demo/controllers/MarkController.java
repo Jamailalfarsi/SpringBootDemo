@@ -78,5 +78,9 @@ public class MarkController {
     public void createMark(@RequestParam String grade,Integer obtainedMark) {
         markService.createMark(grade,obtainedMark);
     }
+    @RequestMapping(value = "updateMark",method = RequestMethod.POST)
+    public void updateMark(@RequestParam Integer id,String grade,Integer obtainedMark,Boolean  isActive){
+        markService.updateMark(id, grade,obtainedMark, isActive);
+    }
 
 }
