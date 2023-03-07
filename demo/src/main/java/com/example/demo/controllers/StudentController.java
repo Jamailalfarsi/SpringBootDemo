@@ -92,5 +92,10 @@ public class StudentController {
     @RequestMapping(value = "createStudent", method = RequestMethod.POST)
     public void createStudent(@RequestParam String student_name) {
         studentService.createStudent(student_name);
+
+    }
+    @RequestMapping(value = "updateStudent",method = RequestMethod.POST)
+    public void updateStudent(@RequestParam Integer id,String student_name,Boolean  isActive){
+        studentService.updateStudent(id, student_name, isActive);
     }
 }

@@ -132,6 +132,13 @@ public List<Student> getAllActiveStudents() {
         student.setCratedDate(new Date());
         studentRepository.save(student);
     }
+    public void updateStudent(Integer id,String student_name,Boolean isActive){
+        Student student =studentRepository.getStudentById(id);
+        student.setName(student_name);
+        student.setCratedDate(new Date());
+        student.setActive(true);
+        studentRepository.save(student);
+    }
 
 
 
