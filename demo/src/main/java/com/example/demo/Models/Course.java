@@ -5,7 +5,7 @@ import org.yaml.snakeyaml.error.Mark;
 import javax.persistence.*;
 import java.util.List;
 @Entity
-public class Course {
+public class Course extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
@@ -29,15 +29,8 @@ public class Course {
     public void setId(Integer id) {
         this.id = id;
     }
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
-    List<Mark>marks;
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    Student student;
 
-    public List<Mark> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<Mark> marks) {
-        this.marks = marks;
-    }
 }

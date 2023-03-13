@@ -1,12 +1,9 @@
 package com.example.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Mark {
+public class Mark extends BaseEntity {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +37,10 @@ public class Mark {
     }
 
     String grade;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    Course course;
+
+
 }

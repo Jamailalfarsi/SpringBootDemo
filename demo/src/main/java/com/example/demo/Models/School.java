@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class School {
+public class School extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -27,16 +27,7 @@ public class School {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(referencedColumnName = "id")
-    List<Student> student;
-    public List<Student> getStudent() {
-        return student;
-    }
 
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
 
 
 }

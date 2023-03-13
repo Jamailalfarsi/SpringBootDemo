@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 
 
-public class Student {
+public class Student extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Integer id;
@@ -39,6 +39,11 @@ public class Student {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "school_id", referencedColumnName = "id")
+    School school;
+
 
 
 
