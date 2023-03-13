@@ -1,8 +1,7 @@
 package com.example.demo.Repositories;
 
+
 import com.example.demo.Models.Course;
-import com.example.demo.Models.School;
-import com.example.demo.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -32,11 +31,11 @@ public interface CourseRepository extends CrudRepository<Course,Integer> {
     @Query(value = "SELECT s from Course s where s.id=(SELECT max(id) from Course)")
     List<Course> getLatestRow();
 
-    @Query(value = "SELECT s from Course s where s.cratedDate> :cratedDate")
-    List<Course> getCourseCreatedAfterDate(@Param("cratedDate") Date cratedDate);
+    @Query(value = "SELECT s from Course s where s.createdDate> :createdDate")
+    List<Course> getCourseCreatedAfterDate(@Param("createdDate") Date createdDate);
 
-    @Query(value = "SELECT s from Course s where s.cratedDate= :cratedDate")
-    Course getCourseByCreatedDate(@Param("cratedDate")Date cratedDate);
+    @Query(value = "SELECT s from Course s where s.createdDate =:createdDate")
+    Course getCourseByCreatedDate(@Param("createdDate")Date createdDate);
     @Query(value = "SELECT s from Course s where s.updatedDate= :updatedDate")
     Course getCourseByUpdatedDate(@Param("updatedDate")Date updatedDate);
 

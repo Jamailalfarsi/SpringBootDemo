@@ -90,17 +90,17 @@ public List<Student> getAllActiveStudents() {
         studentRepository.saveAll(students);
     }
 
-    public List<Student> getStudentCreatedAfterDate(String cratedDate) throws ParseException {
+    public List<Student> getStudentCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         List<Student> students = studentRepository.getStudentCreatedAfterDate(javaDate);
         return students;
     }
 
 
-    public Student getStudentByCreatedDate(Date cratedDate) {
+    public Student getStudentByCreatedDate(Date createdDate) {
 
-        return studentRepository.getStudentByCreatedDate(cratedDate);
+        return studentRepository.getStudentByCreatedDate(createdDate);
     }
     public Student getStudentByUpdatedDate(Date updatedDate) {
 
@@ -111,9 +111,9 @@ public List<Student> getAllActiveStudents() {
         return studentRepository.getStudentByAge(age);
     }
 
-    public void deleteStudentByCreatedDate(String cratedDate) throws ParseException{
+    public void deleteStudentByCreatedDate(String createdDate) throws ParseException{
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         Student student = studentRepository.getStudentByCreatedDate(javaDate);
         student.setActive(false);
         studentRepository.save(student);

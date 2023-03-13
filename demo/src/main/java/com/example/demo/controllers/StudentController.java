@@ -1,8 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
-import com.example.demo.Services.SchoolService;
 import com.example.demo.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,16 +54,16 @@ public class StudentController {
     }
 
     @RequestMapping(value = "studentCreatedAfterDate")
-    public List<Student> getStudentCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
-        List<Student> students = studentService.getStudentCreatedAfterDate(cratedDate);
+    public List<Student> getStudentCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        List<Student> students = studentService.getStudentCreatedAfterDate(createdDate);
         return students;
 
 
     }
 
     @RequestMapping(value="getStudentByCreatedDate",method = RequestMethod.GET)
-    public Student getStudentByCreatedDate(@RequestParam Date cratedDate){
-        Student student=studentService.getStudentByCreatedDate(cratedDate);
+    public Student getStudentByCreatedDate(@RequestParam Date createdDate){
+        Student student=studentService.getStudentByCreatedDate(createdDate);
         return student;
     }
 
@@ -80,8 +78,8 @@ public class StudentController {
         return student;
     }
     @RequestMapping(value = "deleteStudentsByCreatedDate", method = RequestMethod.POST)
-    public void deleteStudentsByCreatedDate(@RequestParam String cratedDate) throws ParseException {
-        studentService.deleteStudentByCreatedDate(cratedDate);
+    public void deleteStudentsByCreatedDate(@RequestParam String createdDate) throws ParseException {
+        studentService.deleteStudentByCreatedDate(createdDate);
 
     }
     @RequestMapping(value = "deleteStudentsByUpdatedDate", method = RequestMethod.POST)

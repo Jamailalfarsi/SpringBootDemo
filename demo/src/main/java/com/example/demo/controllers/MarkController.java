@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.Mark;
-import com.example.demo.Models.School;
 import com.example.demo.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,13 +48,13 @@ public class MarkController {
     }
 
     @RequestMapping(value = "markCreatedAfterDate")
-    public List<Mark> getMarkCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
-        List<Mark> marks = markService.getMarkCreatedAfterDate(cratedDate);
+    public List<Mark> getMarkCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        List<Mark> marks = markService.getMarkCreatedAfterDate(createdDate);
         return marks;
     }
     @RequestMapping(value="getMarkByCreatedDate",method = RequestMethod.GET)
-    public Mark getMarkByCreatedDate(@RequestParam Date cratedDate){
-        Mark mark=markService.getMarkByCreatedDate(cratedDate);
+    public Mark getMarkByCreatedDate(@RequestParam Date createdDate){
+        Mark mark=markService.getMarkByCreatedDate(createdDate);
         return mark;
     }
 
@@ -65,8 +64,8 @@ public class MarkController {
         return mark;
     }
     @RequestMapping(value = "deleteMarkByCreatedDate", method = RequestMethod.POST)
-    public void deleteMarkByCreatedDate(@RequestParam String cratedDate) throws ParseException {
-        markService.deleteMarkByCreatedDate(cratedDate);
+    public void deleteMarkByCreatedDate(@RequestParam String createdDate) throws ParseException {
+        markService.deleteMarkByCreatedDate(createdDate);
 
     }
     @RequestMapping(value = "deleteMarkByUpdatedDate", method = RequestMethod.POST)
@@ -75,12 +74,12 @@ public class MarkController {
 
     }
     @RequestMapping(value = "createMark", method = RequestMethod.POST)
-    public void createMark(@RequestParam String grade,Integer obtainedMark) {
-        markService.createMark(grade,obtainedMark);
+    public void createMark(@RequestParam String grade,Integer obtainMark) {
+        markService.createMark(grade,obtainMark);
     }
     @RequestMapping(value = "updateMark",method = RequestMethod.POST)
-    public void updateMark(@RequestParam Integer id,String grade,Integer obtainedMark,Boolean  isActive){
-        markService.updateMark(id, grade,obtainedMark, isActive);
+    public void updateMark(@RequestParam Integer id,String grade,Integer obtainMark,Boolean  isActive){
+        markService.updateMark(id, grade,obtainMark, isActive);
     }
 
 }

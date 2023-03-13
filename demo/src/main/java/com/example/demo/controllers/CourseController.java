@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
-import com.example.demo.Models.School;
 import com.example.demo.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +32,13 @@ public class CourseController {
         List<Course> orderCoursesList = courseService.getLatestRow();
         return orderCoursesList;
     }
-//    @GetMapping(value = "deleteById")
-//    public String deleteCourseById(@RequestParam Integer id) {
-//
-//        courseService.deleteCourseById(id);
-//        return "Record Deleted Successfully :)";
-//
-//    }
+    @GetMapping(value = "deleteById")
+    public String deleteCourseById(@RequestParam Integer id) {
+
+        courseService.deleteCourseById(id);
+        return "Record Deleted Successfully :)";
+
+    }
 
     @RequestMapping(value = "deleteAll")
     public void deleteAll() {
@@ -48,14 +47,14 @@ public class CourseController {
     }
 
     @RequestMapping(value = "courseCreatedAfterDate")
-    public List<Course> getCourseCreatedAfterDate(@RequestParam String cratedDate) throws ParseException {
-        List<Course> courses = courseService.getCourseCreatedAfterDate(cratedDate);
+    public List<Course> getCourseCreatedAfterDate(@RequestParam String createdDate) throws ParseException {
+        List<Course> courses = courseService.getCourseCreatedAfterDate(createdDate);
         return courses;
 
     }
     @RequestMapping(value="getCourseByCreatedDate",method = RequestMethod.GET)
-    public Course getCourseByCreatedDate(@RequestParam Date cratedDate){
-        Course course=courseService.getCourseByCreatedDate(cratedDate);
+    public Course getCourseByCreatedDate(@RequestParam Date createdDate){
+        Course course=courseService.getCourseByCreatedDate(createdDate);
         return course;
     }
 
@@ -65,8 +64,8 @@ public class CourseController {
         return course;
     }
     @RequestMapping(value = "deleteCourseByCreatedDate", method = RequestMethod.POST)
-    public void deleteCourseByCreatedDate(@RequestParam String cratedDate) throws ParseException {
-        courseService.deleteCourseByCreatedDate(cratedDate);
+    public void deleteCourseByCreatedDate(@RequestParam String createdDate) throws ParseException {
+        courseService.deleteCourseByCreatedDate(createdDate);
 
     }
     @RequestMapping(value = "deleteCourseByUpdatedDate", method = RequestMethod.POST)

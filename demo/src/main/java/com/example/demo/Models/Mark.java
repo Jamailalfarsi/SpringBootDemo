@@ -3,11 +3,17 @@ package com.example.demo.Models;
 import javax.persistence.*;
 
 @Entity
-public class Mark extends BaseEntity {
+public class Mark extends BaseEntity{
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    Integer obtainMark;
+    String grade;
+
+    @ManyToOne // many mark to one course
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    Course course;
+
     public Integer getId() {
         return id;
     }
@@ -16,17 +22,13 @@ public class Mark extends BaseEntity {
         this.id = id;
     }
 
-
-
-    public Integer getObtainedMark() {
-        return obtainedMark;
+    public Integer getObtainMark() {
+        return obtainMark;
     }
 
-    public void setObtainedMark(Integer obtainedMark) {
-        this.obtainedMark = obtainedMark;
+    public void setObtainMark(Integer obtainMark) {
+        this.obtainMark = obtainMark;
     }
-
-    Integer obtainedMark;
 
     public String getGrade() {
         return grade;
@@ -35,12 +37,4 @@ public class Mark extends BaseEntity {
     public void setGrade(String grade) {
         this.grade = grade;
     }
-
-    String grade;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
-    Course course;
-
-
 }

@@ -63,25 +63,25 @@ public class MarkService {
         markRepository.saveAll(marks);
     }
 
-    public List<Mark> getMarkCreatedAfterDate(String cratedDate) throws ParseException {
+    public List<Mark> getMarkCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         List<Mark> marks = markRepository.getMarkCreatedAfterDate(javaDate);
         return marks;
     }
 
-    public Mark getMarkByCreatedDate(Date cratedDate) {
+    public Mark getMarkByCreatedDate(Date createdDate) {
 
-        return markRepository.getMarkByCreatedDate(cratedDate);
+        return markRepository.getMarkByCreatedDate(createdDate);
     }
     public Mark getMarkByUpdatedDate(Date updatedDate) {
 
         return markRepository.getMarkByUpdatedDate(updatedDate);
     }
 
-    public void deleteMarkByCreatedDate(String cratedDate) throws ParseException{
+    public void deleteMarkByCreatedDate(String createdDate) throws ParseException{
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         Mark mark= markRepository.getMarkByCreatedDate(javaDate);
         mark.setActive(false);
         markRepository.save(mark);
@@ -93,18 +93,18 @@ public class MarkService {
         mark.setActive(false);
         markRepository.save(mark);
     }
-    public void  createMark(String grade,Integer obtainedMark) {
+    public void  createMark(String grade,Integer obtainMark) {
         Mark mark=new Mark();
         mark.setGrade(grade);
-        mark.setObtainedMark(obtainedMark);
+        mark.setObtainMark(obtainMark);
         mark.setActive(true);
         mark.setCreatedDate(new Date());
         markRepository.save(mark);
     }
-    public void updateMark(Integer id,String grade,Integer obtainedMark,Boolean isActive){
+    public void updateMark(Integer id,String grade,Integer obtainMark,Boolean isActive){
         Mark mark =markRepository.getMarkById(id);
         mark.setGrade(grade);
-        mark.setObtainedMark(obtainedMark);
+        mark.setObtainMark(obtainMark);
         mark.setCreatedDate(new Date());
         mark.setActive(true);
         markRepository.save(mark);

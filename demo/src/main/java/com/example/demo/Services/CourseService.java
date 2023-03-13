@@ -49,10 +49,10 @@ public class CourseService {
         return courseRepository.getLatestRow();
     }
 
-//    public void deleteCourseById(Integer id){
-//        Course courseToDelete = courseRepository.findById(id).get();
-//        courseRepository.delete(courseToDelete);
-//    }
+    public void deleteCourseById(Integer id){
+        Course courseToDelete = courseRepository.findById(id).get();
+        courseRepository.delete(courseToDelete);
+    }
 
     public void deleteCourselById(Integer id){
         Course course = courseRepository.getCourseById(id);
@@ -75,21 +75,21 @@ public class CourseService {
 
     }
 
-    public List<Course> getCourseCreatedAfterDate(String cratedDate) throws ParseException {
+    public List<Course> getCourseCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         List<Course> courses = courseRepository.getCourseCreatedAfterDate(javaDate);
         return courses;
     }
-    public Course getCourseByCreatedDate(Date cratedDate) {
-        return courseRepository.getCourseByCreatedDate(cratedDate);
+    public Course getCourseByCreatedDate(Date createdDate) {
+        return courseRepository.getCourseByCreatedDate(createdDate);
     }
     public Course getCourseByUpdatedDate(Date updatedDate) {
         return courseRepository.getCourseByUpdatedDate(updatedDate);
     }
-    public void deleteCourseByCreatedDate(String cratedDate) throws ParseException{
+    public void deleteCourseByCreatedDate(String createdDate) throws ParseException{
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         Course course= courseRepository.getCourseByCreatedDate(javaDate);
         course.setActive(false);
         courseRepository.save(course);

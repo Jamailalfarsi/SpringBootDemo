@@ -83,22 +83,22 @@ public class SchoolService {
         schoolRepository.saveAll(schools);
     }
 
-    public List<School> getSchoolCreatedAfterDate(String cratedDate) throws ParseException {
+    public List<School> getSchoolCreatedAfterDate(String createdDate) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         List<School> schools = schoolRepository.getSchoolCreatedAfterDate(javaDate);
         return schools;
     }
 
-    public School getSchoolByCreatedDate(Date cratedDate) {
-        return schoolRepository.getSchoolByCreatedDate(cratedDate);
+    public School getSchoolByCreatedDate(Date createdDate) {
+        return schoolRepository.getSchoolByCreatedDate(createdDate);
     }
     public School getSchoolByUpdatedDate(Date updatedDate) {
         return schoolRepository.getSchoolByUpdatedDate(updatedDate);
     }
-    public void deleteSchoolsByCreatedDate(String cratedDate) throws ParseException{
+    public void deleteSchoolsByCreatedDate(String createdDate) throws ParseException{
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date javaDate = formatter.parse(cratedDate);
+        Date javaDate = formatter.parse(createdDate);
         School school = schoolRepository.getSchoolByCreatedDate(javaDate);
         school.setActive(false);
         schoolRepository.save(school);

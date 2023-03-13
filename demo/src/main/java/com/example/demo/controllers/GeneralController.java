@@ -4,7 +4,6 @@ import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
-import com.example.demo.Repositories.CourseRepository;
 import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Services.CourseService;
 import com.example.demo.Services.SchoolService;

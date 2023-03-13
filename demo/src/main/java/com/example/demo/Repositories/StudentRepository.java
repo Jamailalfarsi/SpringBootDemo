@@ -1,7 +1,5 @@
 package com.example.demo.Repositories;
 
-import com.example.demo.Models.Course;
-import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -41,11 +39,11 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query(value = "SELECT s from Student s where s.id=(SELECT max(id) from Student)")
     List<Student> getLatestRow();
 
-    @Query(value = "SELECT s from Student s where s.cratedDate> :cratedDate")
-    List<Student> getStudentCreatedAfterDate(@Param("cratedDate") Date cratedDate);
+    @Query(value = "SELECT s from Student s where s.createdDate> :createdDate")
+    List<Student> getStudentCreatedAfterDate(@Param("createdDate") Date createdDate);
 
-    @Query(value = "SELECT s from Student s where s.cratedDate= :cratedDate")
-    Student getStudentByCreatedDate(@Param("cratedDate")Date cratedDate);
+    @Query(value = "SELECT s from Student s where s.createdDate= :createdDate")
+    Student getStudentByCreatedDate(@Param("createdDate")Date createdDate);
 
     @Query(value = "SELECT s from Student s where s.updatedDate= :updatedDate")
     Student getStudentByUpdatedDate(@Param("updatedDate")Date updatedDate);

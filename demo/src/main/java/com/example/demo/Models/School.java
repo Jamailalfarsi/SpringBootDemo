@@ -1,14 +1,21 @@
 package com.example.demo.Models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 
+// to create tables and bring data from table into objects of models
 @Entity
 public class School extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     Integer id;
+    @Column(name = "school_name")
+    String name;
+
+//   @OneToMany // Doing the relation
+//   @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
+    //List<Student> students; //comment out because it will create a cyclic mapping
+
     public Integer getId() {
         return id;
     }
@@ -17,8 +24,6 @@ public class School extends BaseEntity{
         this.id = id;
     }
 
-    @Column(name="school_name")
-    String name;
     public String getName() {
         return name;
     }
@@ -29,5 +34,11 @@ public class School extends BaseEntity{
 
 
 
-
+//    public List<Student> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(List<Student> students) {
+//        this.students = students;
+//    }
 }
