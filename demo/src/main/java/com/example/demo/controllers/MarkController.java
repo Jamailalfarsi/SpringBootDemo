@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.Mark;
+import com.example.demo.Models.School;
 import com.example.demo.Services.MarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,15 @@ import java.util.List;
 public class MarkController {
     @Autowired
     MarkService markService;
+
+    public List<Mark> getAllMarks() {
+        return markService.getAllMarks();
+    }
+
+    public Mark getMarkById(Integer id) {
+        return markService.getMarkById(id);
+
+    }
 
     @RequestMapping(value = "getAllMarkByIsInActive")
     public List<Mark> getAllInActiveMarks() {
