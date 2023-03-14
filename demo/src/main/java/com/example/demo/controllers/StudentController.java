@@ -17,12 +17,12 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-//    @RequestMapping(value = "getAll")
-//    public List<Student> getAllStudents() {
-//        List<Student> students = new ArrayList<>();
-//        students = studentService.getAllStudents();
-//        return students;
-//    }
+    @RequestMapping(value = "getAll")
+    public List<Student> getAllStudents() {
+        List<Student> students = new ArrayList<>();
+        students = studentService.getAllStudents();
+        return students;
+    }
 
 
     @RequestMapping(value = "getById")

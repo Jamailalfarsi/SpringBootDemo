@@ -1,11 +1,13 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
+import com.example.demo.Models.School;
 import com.example.demo.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +16,25 @@ import java.util.List;
 public class CourseController {
     @Autowired
     CourseService courseService;
+
+    @RequestMapping(value = "getAll")
+    public List<Course> getAllCourses() {
+        List<Course> courses = new ArrayList<>();
+        courses = courseService.getAllCourses();
+        return courses;
+    }
+
+    @RequestMapping(value = "getById")
+    public Course getCourseById(@RequestParam Integer id) {
+        Course course = courseService.getCourseById(id);
+        return course;
+    }
+
+    @RequestMapping(value = "getByName")
+    public Course getByCourseName(@RequestParam String course_name) {
+        Course course = courseService.getByCourseName(course_name);
+        return course;
+    }
 
     @RequestMapping(value = "getAllCourseByIsActive")
     public List<Course> getAllActiveCourses() {

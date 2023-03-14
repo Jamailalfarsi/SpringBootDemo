@@ -21,12 +21,12 @@ public class SchoolController {
     SlackClient slackClient;
 
 
-//    @RequestMapping(value = "getAll")
-//    public List<School> getAllSchools() {
-//        List<School> schools = new ArrayList<>();
-//        schools = schoolService.getAllSchools();
-//        return schools;
-//    }
+    @RequestMapping(value = "getAll")
+    public List<School> getAllSchools() {
+        List<School> schools = new ArrayList<>();
+        schools = schoolService.getAllSchools();
+        return schools;
+    }
 
 
     @RequestMapping(value = "getById")
