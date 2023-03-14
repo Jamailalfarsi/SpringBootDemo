@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.Models.School;
 import com.example.demo.RequestObject.SchoolRequestForCreateDataUpdate;
 import com.example.demo.Services.SchoolService;
+import com.example.demo.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,19 @@ import java.util.List;
 public class SchoolController {
     @Autowired
     SchoolService schoolService;
+    @Autowired
+    SlackClient slackClient;
 
     @RequestMapping(value = "getAllSchoolByIsActive")
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
+         for(School s:activeSchoolsList){
+             slackClient.sendMessage("slackMessageActive:"+s.getActive());
+             slackClient.sendMessage("slackMessageId:"+s.getId());
+             
+
+
+         }
         return activeSchoolsList;
     }
 

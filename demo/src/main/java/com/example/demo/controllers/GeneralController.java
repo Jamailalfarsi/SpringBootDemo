@@ -8,6 +8,7 @@ import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Services.CourseService;
 import com.example.demo.Services.SchoolService;
 import com.example.demo.Services.StudentService;
+import com.example.demo.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,51 +29,50 @@ public class GeneralController {
     MarkRepository markService;
 
 
-
     //School Apis
-    @RequestMapping(value="school/getAll",method= RequestMethod.GET)
-    public List<School> getAllSchools(){
-       // List<School> schools=new ArrayList<>();
-        List<School> schools=schoolService.getAllSchools();
+    @RequestMapping(value = "school/getAll", method = RequestMethod.GET)
+    public List<School> getAllSchools() {
+        // List<School> schools=new ArrayList<>();
+        List<School> schools = schoolService.getAllSchools();
         return schools;
     }
 
-    @RequestMapping(value="student/getAll",method= RequestMethod.GET)
-    public List<Student> getAllStudents(){
-        List<Student> students=studentService.getAllStudents();
+    @RequestMapping(value = "student/getAll", method = RequestMethod.GET)
+    public List<Student> getAllStudents() {
+        List<Student> students = studentService.getAllStudents();
         return students;
     }
 
 
+    @RequestMapping(value = "course/getAll", method = RequestMethod.GET)
+    public List<Course> getAllCourses() {
 
-    @RequestMapping(value="course/getAll",method= RequestMethod.GET)
-    public List<Course> getAllCourses(){
-
-        List<Course> courses=courseService.getAllCourses();
+        List<Course> courses = courseService.getAllCourses();
         return courses;
     }
 
-    @RequestMapping(value="mark/getAll",method= RequestMethod.GET)
-    public List<Mark> getAllMarks(){
+    @RequestMapping(value = "mark/getAll", method = RequestMethod.GET)
+    public List<Mark> getAllMarks() {
 
-        List<Mark> marks=markService.getAllMarks();
+        List<Mark> marks = markService.getAllMarks();
         return marks;
     }
 
-    @RequestMapping(value="school/getById",method = RequestMethod.GET)
-    public School getSchoolById(@RequestParam Integer id){
+    @RequestMapping(value = "school/getById", method = RequestMethod.GET)
+    public School getSchoolById(@RequestParam Integer id) {
         // School school=new School();
-        School school=schoolService.getSchoolById(id);
+        School school = schoolService.getSchoolById(id);
         return school;
     }
-    @RequestMapping(value="student/getById",method = RequestMethod.GET)
+
+    @RequestMapping(value = "student/getById", method = RequestMethod.GET)
     public Student getStudentById(@RequestParam Integer id) {
 
         Student student = studentService.getStudentById(id);
         return student;
     }
 
-    @RequestMapping(value="mark/getById",method = RequestMethod.GET)
+    @RequestMapping(value = "mark/getById", method = RequestMethod.GET)
     public Mark getMarkById(@RequestParam Integer id) {
 
         Mark mark = markService.getMarkById(id);
@@ -80,30 +80,29 @@ public class GeneralController {
     }
 
 
-    @RequestMapping(value="course/getById",method = RequestMethod.GET)
-    public Course getCourseById(@RequestParam Integer id){
+    @RequestMapping(value = "course/getById", method = RequestMethod.GET)
+    public Course getCourseById(@RequestParam Integer id) {
 
-        Course course=courseService.getCourseById(id);
+        Course course = courseService.getCourseById(id);
         return course;
     }
 
-    @RequestMapping(value="school/getByName",method=RequestMethod.GET)
-    public School getSchoolByName(@RequestParam String school_name){
-        School school=schoolService.getBySchoolName(school_name);
+    @RequestMapping(value = "school/getByName", method = RequestMethod.GET)
+    public School getSchoolByName(@RequestParam String school_name) {
+        School school = schoolService.getBySchoolName(school_name);
         return school;
     }
 
-    @RequestMapping(value="student/getByName",method=RequestMethod.GET)
-    public Student getStudentByName(@RequestParam String student_name){
-        Student student=studentService.getByStudentName(student_name);
+    @RequestMapping(value = "student/getByName", method = RequestMethod.GET)
+    public Student getStudentByName(@RequestParam String student_name) {
+        Student student = studentService.getByStudentName(student_name);
         return student;
     }
 
 
-
-    @RequestMapping(value="course/getByName",method=RequestMethod.GET)
-    public Course getCourseByName(@RequestParam String course_name){
-        Course course=courseService.getByCourseName(course_name);
+    @RequestMapping(value = "course/getByName", method = RequestMethod.GET)
+    public Course getCourseByName(@RequestParam String course_name) {
+        Course course = courseService.getByCourseName(course_name);
         return course;
     }
 
@@ -113,6 +112,17 @@ public class GeneralController {
         return studentService.getStudentsBySchoolName(schoolName);
 
     }
+    @Autowired
+    SlackClient slackClient;
+    @GetMapping(value="test")
+    public String test(){
+        return "${spring.profiles.active}";
+    }
+
+    @GetMapping(value = "slackMessage")
+    public void message(@RequestParam String text){
+        slackClient.sendMessage(text);
+}
 
 
 }
