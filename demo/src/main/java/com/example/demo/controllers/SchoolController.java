@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,14 +20,33 @@ public class SchoolController {
     @Autowired
     SlackClient slackClient;
 
+
+    @RequestMapping(value = "getAll")
+    public List<School> getAllSchools() {
+        List<School> schools = new ArrayList<>();
+        schools = schoolService.getAllSchools();
+        return schools;
+    }
+
+
+    @RequestMapping(value = "getById")
+    public School getSchoolById(@RequestParam Integer id) {
+        School school = schoolService.getSchoolById(id);
+        return school;
+    }
+
+    @RequestMapping(value = "getByName")
+    public School getBySchoolName(@RequestParam String school_name) {
+        School school = schoolService.getBySchoolName(school_name);
+        return school;
+    }
+
     @RequestMapping(value = "getAllSchoolByIsActive")
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
          for(School s:activeSchoolsList){
              slackClient.sendMessage("slackMessageActive:"+s.getActive());
              slackClient.sendMessage("slackMessageId:"+s.getId());
-             
-
 
          }
         return activeSchoolsList;
@@ -35,6 +55,7 @@ public class SchoolController {
     @RequestMapping(value = "getAllSchoolByIsInActive")
     public List<School> getAllInActiveSchools() {
         List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
+
         return InactiveSchoolsList;
     }
 
