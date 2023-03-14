@@ -1,11 +1,13 @@
 package com.example.demo.controllers;
 
+import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import com.example.demo.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +16,27 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+
+//    @RequestMapping(value = "getAll")
+//    public List<Student> getAllStudents() {
+//        List<Student> students = new ArrayList<>();
+//        students = studentService.getAllStudents();
+//        return students;
+//    }
+
+
+    @RequestMapping(value = "getById")
+    public Student getStudentById(@RequestParam Integer id) {
+        Student student = studentService.getStudentById(id);
+        return student;
+    }
+
+    @RequestMapping(value = "getByName")
+    public Student getByStudentName(@RequestParam String student_name) {
+        Student student = studentService.getByStudentName(student_name);
+        return student;
+    }
+
 
     @RequestMapping(value = "getAllStudentByIsActive")
     public List<Student> getAllActiveSchools() {
