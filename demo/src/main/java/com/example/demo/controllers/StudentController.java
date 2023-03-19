@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import com.example.demo.Services.StudentService;
+import com.example.demo.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +18,22 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    SlackClient slackClient;
+
     @RequestMapping(value = "getAll")
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
         students = studentService.getAllStudents();
+
+        for(Student s : students) {
+            slackClient.sendMessage("The Name of the Student is :" + s.getName().toString());
+            slackClient.sendMessage(s.getActive().toString());
+            slackClient.sendMessage(s.getCreatedDate().toString());
+            slackClient.sendMessage(s.getUpdatedDate().toString());
+            slackClient.sendMessage(s.getCreatedDate().toString());
+        }
+
         return students;
     }
 
@@ -41,12 +54,22 @@ public class StudentController {
     @RequestMapping(value = "getAllStudentByIsActive")
     public List<Student> getAllActiveSchools() {
         List<Student> activeStudentsList = studentService.getAllActiveStudents();
+        for(Student s:activeStudentsList){
+            slackClient.sendMessage("slackMessageActive:"+s.getActive().toString());
+        }
         return activeStudentsList;
     }
 
     @RequestMapping(value = "getAllStudentByIsInActive")
     public List<Student> getAllInActiveStudents() {
         List<Student> InactiveStudentsList = studentService.getAllInActiveStudents();
+        for(Student s:InactiveStudentsList){
+            slackClient.sendMessage("slackMessageInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_StudentId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_StudentName:"+s.getName().toString());
+            slackClient.sendMessage("slackMassage_StudentCreatedDate"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_StudentUpdatedDate"+s.getUpdatedDate());
+        }
         return InactiveStudentsList;
     }
 

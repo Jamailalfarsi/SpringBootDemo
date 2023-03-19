@@ -32,14 +32,27 @@ public class SchoolController {
     @RequestMapping(value = "getById")
     public School getSchoolById(@RequestParam Integer id) {
         School school = schoolService.getSchoolById(id);
-//        slackClient.sendMessage("The school Id is:" + school.getId());
+        slackClient.sendMessage(school.getName());
+        slackClient.sendMessage("The school Id is:" + school.getId().toString());
+        slackClient.sendMessage(school.getActive().toString());
+        slackClient.sendMessage(school.getCreatedDate().toString());
+        slackClient.sendMessage(school.getUpdatedDate().toString());
+
 
         return school;
     }
 
     @RequestMapping(value = "getByName")
-    public School getBySchoolName(@RequestParam String school_name) {
-        School school = schoolService.getBySchoolName(school_name);
+    public List<School> getBySchoolName(@RequestParam String school_name) {
+        List<School> school = schoolService.getBySchoolName(school_name);
+
+        for(School s : school) {
+            slackClient.sendMessage("The Name of the School is :" + s.getName());
+            slackClient.sendMessage(s.getActive().toString());
+            slackClient.sendMessage(s.getCreatedDate().toString());
+            slackClient.sendMessage(s.getUpdatedDate().toString());
+            slackClient.sendMessage(s.getCreatedDate().toString());
+        }
         return school;
     }
 
@@ -59,7 +72,7 @@ public class SchoolController {
         List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
         for(School s:InactiveSchoolsList){
             slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive());
-            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId());
+//            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId());
         }
 
         return InactiveSchoolsList;
@@ -101,7 +114,7 @@ public class SchoolController {
     @RequestMapping(value = "deleteBySchoolName")
     public void deleteBySchoolName(@RequestParam String school_name) {
 
-        schoolService.deleteBySchoolName(school_name);
+     //  schoolService.deleteBySchoolName(school_name);
 
 
     }
@@ -120,6 +133,8 @@ public class SchoolController {
     @RequestMapping(value="getSchoolByCreatedDate",method = RequestMethod.GET)
     public School getSchoolByCreatedDate(@RequestParam Date createdDate){
         School school=schoolService.getSchoolByCreatedDate(createdDate);
+        slackClient.sendMessage("SlackMessage_SchoolCreateDate:"+school.getCreatedDate().toString());
+
         return school;
     }
 

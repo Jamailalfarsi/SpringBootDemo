@@ -82,15 +82,15 @@ public class GeneralController {
 
     @RequestMapping(value = "course/getById", method = RequestMethod.GET)
     public Course getCourseById(@RequestParam Integer id) {
-
         Course course = courseService.getCourseById(id);
         return course;
+
     }
 
     @RequestMapping(value = "school/getByName", method = RequestMethod.GET)
-    public School getSchoolByName(@RequestParam String school_name) {
-        School school = schoolService.getBySchoolName(school_name);
-        return school;
+    public List<School> getSchoolByName(@RequestParam String school_name) {
+        List<School> school = schoolService.getBySchoolName(school_name);
+      return school;
     }
 
     @RequestMapping(value = "student/getByName", method = RequestMethod.GET)
@@ -106,12 +106,12 @@ public class GeneralController {
         return course;
     }
 
-    @RequestMapping(value = "student/getStudentsBySchoolName", method = RequestMethod.GET)
-    public List<Student> getStudentsBySchoolName(@RequestParam String schoolName) {
-
-        return studentService.getStudentsBySchoolName(schoolName);
-
-    }
+//    @RequestMapping(value = "student/getStudentsBySchoolName", method = RequestMethod.GET)
+//    public List<Student> getStudentsBySchoolName(@RequestParam String schoolName) {
+//
+//        return studentService.getStudentsBySchoolName(schoolName);
+//
+//    }
     @Autowired
     SlackClient slackClient;
     @GetMapping(value="test")

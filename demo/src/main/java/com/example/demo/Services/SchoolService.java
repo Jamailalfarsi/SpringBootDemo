@@ -27,7 +27,7 @@ public class SchoolService {
 
     }
 
-    public School getBySchoolName(String school_name) {
+    public List<School> getBySchoolName(String school_name) {
 
         return schoolRepository.getBySchoolName(school_name);
     }
@@ -69,11 +69,11 @@ public class SchoolService {
         schoolRepository.save(school);
     }
 
-    public void deleteBySchoolName(String school_name) {
-        School school = schoolRepository.getBySchoolName(school_name);
-        school.setActive(false);
-        schoolRepository.save(school);
-    }
+//    public void deleteBySchoolName(String school_name) {
+//        List<School> school = schoolRepository.getBySchoolName(school_name);
+//        school.setActive(false);
+//        schoolRepository.save(school);
+//    }
 
     public void deleteAll() {
         Iterable<School> schools = schoolRepository.findAll();
