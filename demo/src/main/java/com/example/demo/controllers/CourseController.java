@@ -58,6 +58,13 @@ public class CourseController {
     @RequestMapping(value = "getAllCourseByIsInActive")
     public List<Course> getAllInActiveCourses() {
         List<Course> InactiveCoursesList = courseService.getAllInActiveCourses();
+        for(Course s:InactiveCoursesList) {
+            slackClient.sendMessage("slackMessageInActive:" + s.getActive().toString());
+            slackClient.sendMessage("slackMessage_StudentId:" + s.getId().toString());
+            slackClient.sendMessage("slackMessage_StudentName:" + s.getName().toString());
+            slackClient.sendMessage("slackMassage_StudentCreatedDate" + s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_StudentUpdatedDate" + s.getUpdatedDate());
+        }
         return InactiveCoursesList;
     }
 
