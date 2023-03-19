@@ -32,6 +32,8 @@ public class SchoolController {
     @RequestMapping(value = "getById")
     public School getSchoolById(@RequestParam Integer id) {
         School school = schoolService.getSchoolById(id);
+//        slackClient.sendMessage("The school Id is:" + school.getId());
+
         return school;
     }
 
@@ -55,6 +57,10 @@ public class SchoolController {
     @RequestMapping(value = "getAllSchoolByIsInActive")
     public List<School> getAllInActiveSchools() {
         List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
+        for(School s:InactiveSchoolsList){
+            slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive());
+            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId());
+        }
 
         return InactiveSchoolsList;
     }
