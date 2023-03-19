@@ -2,7 +2,9 @@ package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import com.example.demo.Services.CourseService;
+import com.example.demo.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,9 @@ import java.util.List;
 public class CourseController {
     @Autowired
     CourseService courseService;
+    @Autowired
+    SlackClient slackClient;
+
 
     @RequestMapping(value = "getAll")
     public List<Course> getAllCourses() {
@@ -39,6 +44,14 @@ public class CourseController {
     @RequestMapping(value = "getAllCourseByIsActive")
     public List<Course> getAllActiveCourses() {
         List<Course> activeCoursesList = courseService.getAllActiveCourses();
+        for(Course s:activeCoursesList){
+            slackClient.sendMessage("slackMessageActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_CourseId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_CourseName:"+s.getName().toString());
+            slackClient.sendMessage("slackMassage_CourseCreatedDate"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_CourseUpdatedDate"+s.getUpdatedDate());
+        }
+
         return activeCoursesList;
     }
 
