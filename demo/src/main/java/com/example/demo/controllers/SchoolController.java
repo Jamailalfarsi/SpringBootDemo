@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import com.example.demo.RequestObject.SchoolRequestForCreateDataUpdate;
 import com.example.demo.Services.SchoolService;
 import com.example.demo.Slack.SlackClient;
@@ -60,8 +61,11 @@ public class SchoolController {
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
          for(School s:activeSchoolsList){
-             slackClient.sendMessage("slackMessageActive:"+s.getActive());
-             slackClient.sendMessage("slackMessageId:"+s.getId());
+             slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive().toString());
+             slackClient.sendMessage("slackMessage_SchoolId:"+s.getId().toString());
+             slackClient.sendMessage("slackMessage_SchoolName:"+s.getName().toString());
+             slackClient.sendMessage("slackMassage_SchoolCreatedDate"+s.getCreatedDate());
+             slackClient.sendMessage("slackMassage_SchoolUpdatedDate"+s.getUpdatedDate());
 
          }
         return activeSchoolsList;
@@ -71,8 +75,13 @@ public class SchoolController {
     public List<School> getAllInActiveSchools() {
         List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
         for(School s:InactiveSchoolsList){
-            slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive());
-//            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId());
+            slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_SchoolName:"+s.getName().toString());
+            slackClient.sendMessage("slackMassage_SchoolCreatedDate"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_SchoolUpdatedDate"+s.getUpdatedDate());
+
+
         }
 
         return InactiveSchoolsList;
