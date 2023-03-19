@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Services.MarkService;
+import com.example.demo.Slack.SlackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,10 @@ public class MarkController {
     @Autowired
     MarkService markService;
 
+    @Autowired
+    SlackClient slackClient;
+
+
     public List<Mark> getAllMarks() {
         return markService.getAllMarks();
     }
@@ -28,8 +33,38 @@ public class MarkController {
     @RequestMapping(value = "getAllMarkByIsInActive")
     public List<Mark> getAllInActiveMarks() {
         List<Mark> InactiveMarksList = markService.getAllInActiveMarks();
+        for(Mark s:InactiveMarksList){
+            slackClient.sendMessage("SlackMessage_MarkInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_MarkId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_MarkObtain:"+s.getObtainMark().toString());
+            slackClient.sendMessage("slackMassage_MarkCreatedDate:"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_MArkUpdatedDate:"+s.getUpdatedDate());
+            slackClient.sendMessage("slackMassage_MArkGrade:"+s.getGrade());
+
+
+
+        }
+
         return InactiveMarksList;
     }
+
+    @RequestMapping(value = "getAllMarkByIsActive")
+    public List<Mark> getAllActiveMarks() {
+        List<Mark> ActiveMarksList = markService.getAllActiveMarks();
+        for(Mark s:ActiveMarksList){
+            slackClient.sendMessage("SlackMessage_MarkInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_MarkId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_MarkObtain:"+s.getObtainMark().toString());
+            slackClient.sendMessage("slackMassage_MarkCreatedDate:"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_MArkUpdatedDate:"+s.getUpdatedDate());
+            slackClient.sendMessage("slackMassage_MArkGrade:"+s.getGrade());
+            
+
+        }
+
+        return ActiveMarksList;
+    }
+
 
     @RequestMapping(value = "getAllMarkByLastRow")
     public List<Mark> getLatestRow() {
