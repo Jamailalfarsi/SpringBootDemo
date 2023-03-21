@@ -58,7 +58,7 @@ public class MarkController {
             slackClient.sendMessage("slackMassage_MarkCreatedDate:"+s.getCreatedDate());
             slackClient.sendMessage("slackMassage_MArkUpdatedDate:"+s.getUpdatedDate());
             slackClient.sendMessage("slackMassage_MArkGrade:"+s.getGrade());
-            
+
 
         }
 
