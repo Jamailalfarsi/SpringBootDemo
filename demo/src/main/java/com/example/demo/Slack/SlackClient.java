@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class SlackClient {
     public String sendMessage(String text){
         return WebClient.create().post()
-                .uri("https://hooks.slack.com/services/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")
+                .uri("https://hooks.slack.com/services/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")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new SlackPayload(text))
                 .retrieve()

@@ -34,4 +34,5 @@ public class Schedule {
         }
         return activeSchoolsList;
     }
+
 }
