@@ -50,6 +50,7 @@ public class CourseController {
             slackClient.sendMessage("slackMessage_CourseName:"+s.getName().toString());
             slackClient.sendMessage("slackMassage_CourseCreatedDate"+s.getCreatedDate());
             slackClient.sendMessage("slackMassage_CourseUpdatedDate"+s.getUpdatedDate());
+          
         }
 
         return activeCoursesList;
