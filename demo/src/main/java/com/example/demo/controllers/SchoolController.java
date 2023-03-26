@@ -61,12 +61,12 @@ public class SchoolController {
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
          for(School s:activeSchoolsList){
-             slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive().toString());
-             slackClient.sendMessage("slackMessage_SchoolId:"+s.getId().toString());
-             slackClient.sendMessage("slackMessage_SchoolName:"+s.getName().toString());
-             slackClient.sendMessage("slackMassage_SchoolCreatedDate"+s.getCreatedDate());
-             slackClient.sendMessage("slackMassage_SchoolUpdatedDate"+s.getUpdatedDate());
-
+//             slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive().toString());
+//             slackClient.sendMessage("slackMessage_SchoolId:"+s.getId().toString());
+//             slackClient.sendMessage("slackMessage_SchoolName:"+s.getName().toString());
+//             slackClient.sendMessage("slackMassage_SchoolCreatedDate"+s.getCreatedDate());
+//             slackClient.sendMessage("slackMassage_SchoolUpdatedDate"+s.getUpdatedDate());
+             slackClient.sendMessage(schoolService.formatSchoolListForSlack(activeSchoolsList).toString());
          }
         return activeSchoolsList;
     }
