@@ -38,6 +38,23 @@ public class ScheduleMark {
 
         return ActiveMarksList;
     }
+    @RequestMapping(value = "getAllMarkByIsInActive")
+    public List<Mark> getAllInActiveMarks() {
+        List<Mark> InactiveMarksList = markService.getAllInActiveMarks();
+        for(Mark s:InactiveMarksList){
+            slackClient.sendMessage("SlackMessage_MarkInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_MarkId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_MarkObtain:"+s.getObtainMark().toString());
+            slackClient.sendMessage("slackMassage_MarkCreatedDate:"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_MArkUpdatedDate:"+s.getUpdatedDate());
+            slackClient.sendMessage("slackMassage_MArkGrade:"+s.getGrade());
+
+
+        }
+
+        return InactiveMarksList;
+    }
+
 
 
 }

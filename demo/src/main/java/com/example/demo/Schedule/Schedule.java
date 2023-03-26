@@ -20,7 +20,7 @@ public class Schedule {
     @Autowired
     StudentService studentService;
 
-    @Scheduled(cron= "5 * * * *")
+    @Scheduled(cron= "0 */15 * * * *")
     @RequestMapping(value = "getAllSchoolByIsActive")
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
@@ -33,6 +33,21 @@ public class Schedule {
 
         }
         return activeSchoolsList;
+    }
+    @RequestMapping(value = "getAllSchoolByIsInActive")
+    public List<School> getAllInActiveSchools() {
+        List<School> InactiveSchoolsList = schoolService.getAllInActiveSchools();
+        for(School s:InactiveSchoolsList){
+            slackClient.sendMessage("SlackMessage_SchoolInActive:"+s.getActive().toString());
+            slackClient.sendMessage("slackMessage_SchoolId:"+s.getId().toString());
+            slackClient.sendMessage("slackMessage_SchoolName:"+s.getName().toString());
+            slackClient.sendMessage("slackMassage_SchoolCreatedDate"+s.getCreatedDate());
+            slackClient.sendMessage("slackMassage_SchoolUpdatedDate"+s.getUpdatedDate());
+
+
+        }
+
+        return InactiveSchoolsList;
     }
 
 }
