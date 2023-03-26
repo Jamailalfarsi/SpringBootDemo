@@ -16,7 +16,7 @@ public class SchuduleStudent {
     @Autowired
     StudentService studentService;
 
-    @Scheduled(cron= "0 /15 * * * *")
+    @Scheduled(cron= "0 */15 * * * *")
     @RequestMapping(value = "getAllStudentByIsActive")
     public List<Student> getAllActiveSchools() {
         List<Student> activeStudentsList = studentService.getAllActiveStudents();

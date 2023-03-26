@@ -165,6 +165,7 @@ public class SchoolController {
     @RequestMapping(value = "createSchool", method = RequestMethod.POST)
     public void createSchool(@RequestParam String school_name) {
         schoolService.createSchool(school_name);
+
     }
 
     @RequestMapping(value = "updateSchool",method = RequestMethod.POST)
