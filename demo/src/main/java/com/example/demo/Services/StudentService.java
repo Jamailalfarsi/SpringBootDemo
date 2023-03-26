@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
 import com.example.demo.Repositories.SchoolRepository;
@@ -138,6 +139,24 @@ public List<Student> getAllActiveStudents() {
         student.setCreatedDate(new Date());
         student.setActive(true);
         studentRepository.save(student);
+    }
+    public StringBuilder formatStudentObjectForSlack(Student student){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: *" + student.getId() + "*\n");
+        sb.append("Student Name: *" + student.getName() + "*\n");
+        sb.append("Updated date :*"+student.getUpdatedDate()+"*\n");
+        sb.append("Created date:*"+student.getCreatedDate()+"*\n");
+        sb.append("Is Active: *" + student.getActive() + "*\n");
+        return sb;
+    }
+
+    public StringBuilder formatStudentListForSlack(List<Student> students){
+        StringBuilder mainStringBuilder = new StringBuilder();
+        for (Student studentFromListOfstudents: students) {
+            mainStringBuilder.append(formatStudentObjectForSlack(studentFromListOfstudents));
+            mainStringBuilder.append("\n");
+        }
+        return mainStringBuilder;
     }
 
 
