@@ -45,12 +45,13 @@ public class CourseController {
     public List<Course> getAllActiveCourses() {
         List<Course> activeCoursesList = courseService.getAllActiveCourses();
         for(Course s:activeCoursesList){
-            slackClient.sendMessage("slackMessageActive:"+s.getActive().toString());
-            slackClient.sendMessage("slackMessage_CourseId:"+s.getId().toString());
-            slackClient.sendMessage("slackMessage_CourseName:"+s.getName().toString());
-            slackClient.sendMessage("slackMassage_CourseCreatedDate"+s.getCreatedDate());
-            slackClient.sendMessage("slackMassage_CourseUpdatedDate"+s.getUpdatedDate());
-          
+//            slackClient.sendMessage("slackMessageActive:"+s.getActive().toString());
+//            slackClient.sendMessage("slackMessage_CourseId:"+s.getId().toString());
+//            slackClient.sendMessage("slackMessage_CourseName:"+s.getName().toString());
+//            slackClient.sendMessage("slackMassage_CourseCreatedDate"+s.getCreatedDate());
+//            slackClient.sendMessage("slackMassage_CourseUpdatedDate"+s.getUpdatedDate());
+            slackClient.sendMessage(courseService.formatCourseListForSlack(activeCoursesList).toString())
+
         }
 
         return activeCoursesList;
