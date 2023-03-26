@@ -69,11 +69,12 @@ public class StudentController {
     public List<Student> getAllInActiveStudents() {
         List<Student> InactiveStudentsList = studentService.getAllInActiveStudents();
         for(Student s:InactiveStudentsList){
-            slackClient.sendMessage("slackMessageInActive:"+s.getActive().toString());
-            slackClient.sendMessage("slackMessage_StudentId:"+s.getId().toString());
-            slackClient.sendMessage("slackMessage_StudentName:"+s.getName().toString());
-            slackClient.sendMessage("slackMassage_StudentCreatedDate"+s.getCreatedDate());
-            slackClient.sendMessage("slackMassage_StudentUpdatedDate"+s.getUpdatedDate());
+//            slackClient.sendMessage("slackMessageInActive:"+s.getActive().toString());
+//            slackClient.sendMessage("slackMessage_StudentId:"+s.getId().toString());
+//            slackClient.sendMessage("slackMessage_StudentName:"+s.getName().toString());
+//            slackClient.sendMessage("slackMassage_StudentCreatedDate"+s.getCreatedDate());
+//            slackClient.sendMessage("slackMassage_StudentUpdatedDate"+s.getUpdatedDate());
+            slackClient.sendMessage(studentService.formatStudentListForSlack(InactiveStudentsList).toString());
         }
         return InactiveStudentsList;
     }
