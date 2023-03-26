@@ -20,7 +20,7 @@ public class Schedule {
     @Autowired
     StudentService studentService;
 
-    @Scheduled(cron= "0 /15 * * * *")
+    @Scheduled(cron= "5 * * * *")
     @RequestMapping(value = "getAllSchoolByIsActive")
     public List<School> getAllActiveSchools() {
         List<School> activeSchoolsList = schoolService.getAllActiveSchools();
