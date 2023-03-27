@@ -53,6 +53,11 @@ class SchoolControllerTest {
         assertEquals("true",schoolActive);
 
     }
+    void getAllActiveSchools2() {
+        Boolean schoolActive=schoolController.getSchoolById(3).getActive();
+        assertEquals("true",schoolActive);
+
+    }
 
     @Test
     void getAllInActiveSchools() {
