@@ -3,6 +3,7 @@ package com.example.demo.Services;
 import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import com.example.demo.Repositories.CourseRepository;
 import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Repositories.StudentRepository;
@@ -109,6 +110,25 @@ public class MarkService {
         mark.setActive(true);
         markRepository.save(mark);
     }
+    public StringBuilder formatmarkObjectForSlack(Mark mark){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: *" + mark.getId() + "*\n");
+        sb.append("grade: *" + mark.getGrade() + "*\n");
+        sb.append("Updated date :*"+mark.getUpdatedDate()+"*\n");
+        sb.append("Created date:*"+mark.getCreatedDate()+"*\n");
+        sb.append("Is Active: *" + mark.getActive() + "*\n");
+        return sb;
+    }
+
+//    public StringBuilder formatMarkListForSlack(List<Mark> marks){
+//        StringBuilder mainStringBuilder = new StringBuilder();
+//        for (Mark markFromListOfmarks: marks) {
+//            mainStringBuilder.append( formatMarkListForSlack(markFromListOfmarks));
+//            mainStringBuilder.append("\n");
+//        }
+//        return mainStringBuilder;
+//    }
+
 
 
 
