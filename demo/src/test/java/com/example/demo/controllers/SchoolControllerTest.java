@@ -26,6 +26,11 @@ class SchoolControllerTest {
         assertEquals("M",schoolName);
 
     }
+    void getSchoolById2() throws  Exception{
+        String schoolName=schoolController.getSchoolById(3).getName();
+        assertEquals("N",schoolName);
+
+    }
 
     @Test
     void getSchoolByIdThrowsErrorOnInvalid()throws  Exception{
