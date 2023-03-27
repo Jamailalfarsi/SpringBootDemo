@@ -43,13 +43,15 @@ class SchoolControllerTest {
 
     @Test
     void getAllActiveSchools() {
-        //Boolean schoolActive=schoolController.getSchoolById(1).getActive();
+        Boolean schoolActive=schoolController.getSchoolById(1).getActive();
+        assertEquals("true",schoolActive);
 
 
     }
 
     @Test
     void getAllInActiveSchools() {
+
     }
 
     @Test
