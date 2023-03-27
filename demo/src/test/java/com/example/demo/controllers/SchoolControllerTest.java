@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,9 +15,14 @@ class SchoolControllerTest {
     }
 
     @Test
-    void getSchoolById() {
+    void getSchoolById() throws  Exception{
         String schoolName=schoolController.getSchoolById(1).getName();
         assertEquals("L",schoolName);
+
+    }
+    @Test
+    void getSchoolByIdThrowsErrorOnInvalid()throws  Exception{
+        assertThrows(Exception.class, (Executable) schoolController.getSchoolById(30));
     }
 
     @Test
@@ -25,6 +31,9 @@ class SchoolControllerTest {
 
     @Test
     void getAllActiveSchools() {
+        //Boolean schoolActive=schoolController.getSchoolById(1).getActive();
+
+
     }
 
     @Test
