@@ -58,6 +58,11 @@ class SchoolControllerTest {
         assertEquals("true",schoolActive);
 
     }
+    @Test
+    void getSchoolActiveThrowsErrorOnInvalid()throws  Exception{
+        assertThrows(Exception.class, (Executable) schoolController.getSchoolById(0));
+    }
+
 
     @Test
     void getAllInActiveSchools() {
