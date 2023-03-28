@@ -24,6 +24,11 @@ class StudentControllerTest {
         String studentName=studentController.getStudentById(3).getName();
         assertEquals("sara",studentName);
     }
+    @Test
+    void getStudentById2() throws  Exception {
+        String studentName=studentController.getStudentById(4).getName();
+        assertEquals("sara",studentName);
+    }
 
     @Test
     void getByStudentName() {
