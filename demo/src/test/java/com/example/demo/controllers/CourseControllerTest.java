@@ -25,6 +25,11 @@ class CourseControllerTest {
         String courseName=courseController.getCourseById(3).getName();
         assertEquals("English",courseName);
     }
+    @Test
+    void getCourseById2() throws  Exception{
+        String courseName=courseController.getCourseById(4).getName();
+        assertEquals("English",courseName);
+    }
 
     @Test
     void getByCourseName() {
