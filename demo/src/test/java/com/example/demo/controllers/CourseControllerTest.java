@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.Models.Course;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +31,13 @@ class CourseControllerTest {
         String courseName=courseController.getCourseById(4).getName();
         assertEquals("English",courseName);
     }
+    @Test
+    void getCourseByIdWhenIdZerro()throws  Exception{
+        Course courseToTest=courseController.getCourseById(0);
+        assertEquals(null,courseToTest);
+
+    }
+
 
 
     @Test
