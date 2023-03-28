@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,12 @@ class StudentControllerTest {
     void getStudentById2() throws  Exception {
         String studentName=studentController.getStudentById(4).getName();
         assertEquals("sara",studentName);
+    }
+    @Test
+    void getStudentByIdWhenIdZerro()throws  Exception{
+        Student studentToTest=studentController.getStudentById(0);
+        assertEquals(null,studentToTest);
+
     }
 
     @Test

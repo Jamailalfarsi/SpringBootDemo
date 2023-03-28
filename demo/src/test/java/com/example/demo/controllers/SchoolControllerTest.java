@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,12 @@ class SchoolControllerTest {
     void getSchoolById2() throws  Exception{
         String schoolName=schoolController.getSchoolById(3).getName();
         assertEquals("N",schoolName);
+
+    }
+    @Test
+    void getSchoolByIdWhenIdZerro()throws  Exception{
+        School schoolToTest=schoolController.getSchoolById(0);
+        assertEquals(null,schoolToTest);
 
     }
 
