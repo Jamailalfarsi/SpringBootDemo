@@ -1,9 +1,14 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
+
+import com.example.demo.Models.School;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -42,10 +47,12 @@ class CourseControllerTest {
 
     @Test
     void getByCourseName() {
+
     }
 
     @Test
     void getAllActiveCourses() {
+
     }
 
     @Test
@@ -70,6 +77,10 @@ class CourseControllerTest {
 
     @Test
     void getCourseByCreatedDate() {
+//        Course courseToTest;
+//        courseToTest = courseController.getCourseByCreatedDate(valueOf("2022-01-01"));
+//        String courseName=courseToTest.getName();
+//        assertEquals("English",courseName);
     }
 
     @Test
@@ -78,6 +89,7 @@ class CourseControllerTest {
 
     @Test
     void deleteCourseByCreatedDate() {
+
     }
 
     @Test

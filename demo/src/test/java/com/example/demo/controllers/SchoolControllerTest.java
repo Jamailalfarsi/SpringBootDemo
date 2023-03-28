@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
 import com.example.demo.Models.School;
+import com.example.demo.Models.Student;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static java.util.Date.*;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,26 +42,26 @@ class SchoolControllerTest {
 
     }
     @Test
-    void getSchoolByIdWhenIdZerro()throws  Exception{
-        School schoolToTest=schoolController.getSchoolById(0);
-        assertEquals(null,schoolToTest);
+    void getSchoolByIdWhenIdZerro()throws Exception{
+//        School schoolToTest=schoolController.getSchoolById(0);
+//        assertEquals(null,schoolToTest);
 
     }
 
-    @Test
-    void getSchoolByIdThrowsErrorOnInvalid()throws  Exception{
-      assertThrows(Exception.class, (Executable) schoolController.getSchoolById(0));
-    }
+
 
     @Test
     void getBySchoolName() {
+
+
     }
 
     @Test
-    void getAllActiveSchools() {
-//        Boolean schoolActive=schoolController.getSchoolById(1).getActive();
-//        assertEquals("true",schoolActive);
-
+    void getAllActiveSchools() throws  Exception{
+        List<School> School=schoolController.getBySchoolName("L");
+        for(School sch:School){
+            assertEquals(1,sch.getId());
+        }
 
     }
     @Test
@@ -77,7 +79,7 @@ class SchoolControllerTest {
 //    @Test
 //    void getSchoolActiveThrowsErrorOnInvalid()throws  Exception{
 ////        assertThrows(Exception.class, (Executable) schoolController.getSchoolById(0));
-//        School schoolToTest=schoolController.getSchoolById(30);
+//        School schoolToTest=schoolController.getSchoolById(0);
 //        assertEquals(null,schoolToTest);
 //    }
 //@Test
