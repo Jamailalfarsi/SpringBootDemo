@@ -2,12 +2,10 @@ package com.example.demo.controllers;
 
 import com.example.demo.Models.Course;
 
-import com.example.demo.Models.School;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,11 +50,19 @@ class CourseControllerTest {
 
     @Test
     void getAllActiveCourses() {
+//        List<Course> Course=courseController.getByCourseName("English");
+//        for(Course cr:Course){
+//            assertEquals(2,cr.getId());
+//        }
 
     }
 
     @Test
     void getAllInActiveCourses() {
+//        List<Course> Course=courseController.getByCourseName("English");
+//        for(Course cr:Course){
+//            assertEquals(4,cr.getId());
+//        }
     }
 
     @Test

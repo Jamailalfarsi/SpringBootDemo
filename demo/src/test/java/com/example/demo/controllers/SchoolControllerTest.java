@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static java.util.Date.*;
 import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class SchoolControllerTest {
 
@@ -65,17 +65,14 @@ class SchoolControllerTest {
 
     }
     @Test
-    void getAllActiveSchools1() {
-//        Boolean schoolActive=schoolController.getSchoolById(2).getActive();
-//        assertEquals("true",schoolActive);
+    void getAllActiveSchools1() throws  Exception{
+        List<School> School=schoolController.getBySchoolName("M");
+        for(School sch:School){
+            assertEquals(2,sch.getId());
+        }
 
     }
-    @Test
-    void getAllActiveSchools2() {
-//        Boolean schoolActive=schoolController.getSchoolById(3).getActive();
-//        assertEquals("true",schoolActive);
 
-    }
 //    @Test
 //    void getSchoolActiveThrowsErrorOnInvalid()throws  Exception{
 ////        assertThrows(Exception.class, (Executable) schoolController.getSchoolById(0));
@@ -90,8 +87,10 @@ class SchoolControllerTest {
 
     @Test
     void getAllInActiveSchools() {
-//       Boolean schoolActive=schoolController.getSchoolById(4).getActive();
-//       assertEquals("false",schoolActive);
+//       List<School> School=schoolController.getBySchoolName("N");
+//        for(School sch:School){
+//            assertEquals(4,sch.getId());
+//        }
 
     }
 

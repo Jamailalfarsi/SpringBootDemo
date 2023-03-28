@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class StudentControllerTest {
@@ -44,10 +47,18 @@ class StudentControllerTest {
 
     @Test
     void getAllActiveSchools() {
+//        List<Student> Student=studentController.getByStudentName("Maha");
+//        for (Student sch : Student) {
+//            assertEquals(2,sch.getId());
+//        }
     }
 
     @Test
     void getAllInActiveStudents() {
+//        List<Student> student=studentController.getByStudentName("sara");
+//        for (Student sch : student) {
+//          assertEquals(4,sch.getId());
+//       }
     }
 
     @Test
