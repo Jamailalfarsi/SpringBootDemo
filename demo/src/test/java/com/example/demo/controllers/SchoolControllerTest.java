@@ -1,14 +1,14 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Models.School;
+import lombok.Value;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import static java.util.Date.*;
 import java.util.Date;
 
-import static ch.qos.logback.classic.Level.valueOf;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -115,14 +115,9 @@ class SchoolControllerTest {
     }
 
     @Test
-    void getSchoolByCreatedDate()throws  Exception {
-
-//            Date schoolCreatedDate=schoolController.getSchoolById(1).getCreatedDate();
-//            assertEquals("2022-01-01 00:00:00.0000000",schoolCreatedDate);
-//        @Test
-//        void getByCreatedDate2() throws Exception{
+    void getSchoolByCreatedDate1()throws  Exception {
 //        School schoolToTest;
-//        schoolToTest = schoolController.getSchoolByCreatedDate(valueOf("2011-03-01"));
+//        schoolToTest = schoolController.getSchoolByCreatedDate(valueOf("2022-01-01"));
 //        String schoolName=schoolToTest.getName();
 //        assertEquals("L",schoolName);
     }
