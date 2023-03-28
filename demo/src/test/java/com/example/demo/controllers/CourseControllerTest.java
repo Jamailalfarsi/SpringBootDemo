@@ -1,17 +1,24 @@
 package com.example.demo.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+@SpringBootTest
 
 class CourseControllerTest {
+    @Autowired
+    CourseController courseController;
 
     @Test
     void getAllCourses() {
     }
 
     @Test
-    void getCourseById() {
+    void getCourseById() throws  Exception{
+            String courseName=courseController.getCourseById(2).getName();
+            assertEquals("English",courseName);
     }
 
     @Test
