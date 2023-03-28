@@ -3,22 +3,24 @@ package com.example.demo.controllers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class SchoolControllerTest {
+
     @Autowired
     SchoolController schoolController;
 
-    @Test
-    void getAllSchools() {
-    }
+//    @Test
+//    void getAllSchools() {
+//    }
 
     @Test
     void getSchoolById() throws  Exception{
         String schoolName=schoolController.getSchoolById(1).getName();
         assertEquals("L",schoolName);
-
     }
     @Test
     void getSchoolById1() throws  Exception{
@@ -26,6 +28,7 @@ class SchoolControllerTest {
         assertEquals("M",schoolName);
 
     }
+    @Test
     void getSchoolById2() throws  Exception{
         String schoolName=schoolController.getSchoolById(3).getName();
         assertEquals("N",schoolName);
@@ -48,11 +51,13 @@ class SchoolControllerTest {
 
 
     }
+    @Test
     void getAllActiveSchools1() {
         Boolean schoolActive=schoolController.getSchoolById(2).getActive();
         assertEquals("true",schoolActive);
 
     }
+    @Test
     void getAllActiveSchools2() {
         Boolean schoolActive=schoolController.getSchoolById(3).getActive();
         assertEquals("true",schoolActive);
@@ -66,6 +71,8 @@ class SchoolControllerTest {
 
     @Test
     void getAllInActiveSchools() {
+       Boolean schoolActive=schoolController.getSchoolById(4).getActive();
+       assertEquals("false",schoolActive);
 
     }
 
