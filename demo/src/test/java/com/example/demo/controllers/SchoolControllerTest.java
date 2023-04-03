@@ -53,7 +53,6 @@ class SchoolControllerTest {
     @Test
     void getBySchoolName() {
 
-
     }
 
     @Test

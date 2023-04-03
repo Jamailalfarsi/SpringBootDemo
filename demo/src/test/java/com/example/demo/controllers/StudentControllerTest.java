@@ -43,6 +43,8 @@ class StudentControllerTest {
 
     @Test
     void getByStudentName() {
+        String studentName=studentController.getStudentById(2).getName();
+        assertEquals("Maha",studentName);
     }
 
     @Test
