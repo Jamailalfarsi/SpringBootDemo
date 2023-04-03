@@ -46,11 +46,11 @@ class StudentControllerTest {
     }
 
     @Test
-    void getAllActiveSchools() {
-//        List<Student> Student=studentController.getByStudentName("Maha");
-//        for (Student sch : Student) {
-//            assertEquals(2,sch.getId());
-//        }
+    void getAllActiveSchools() throws  Exception{
+//            List<Student> Student=studentController.getByStudentName("Maha");
+//            for(Student std:Student){
+//                assertEquals(2,std.getId());
+//            }
     }
 
     @Test

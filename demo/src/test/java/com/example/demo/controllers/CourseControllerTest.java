@@ -45,6 +45,8 @@ class CourseControllerTest {
 
     @Test
     void getByCourseName() {
+        String courseName=courseController.getCourseById(2).getName();
+        assertEquals("English",courseName);
 
     }
 
