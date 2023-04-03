@@ -3,11 +3,14 @@ package com.example.demo.controllers;
 import ch.qos.logback.classic.Level;
 import com.example.demo.Models.School;
 import com.example.demo.RequestObject.SchoolRequestForCreateDataUpdate;
+import com.example.demo.Services.ReportService;
 import com.example.demo.Services.SchoolService;
 import com.example.demo.Slack.SlackClient;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +23,8 @@ public class SchoolController {
     SchoolService schoolService;
     @Autowired
     SlackClient slackClient;
-
+@Autowired
+    ReportService reportService;
 
     @RequestMapping(value = "getAll")
     public List<School> getAllSchools() {
@@ -173,6 +177,9 @@ public class SchoolController {
         schoolService.updateSchool(id, school_name, isActive);
     }
 
+    @RequestMapping(value="report")
+    public String generateSchoolReport()throws JRException, FileNotFoundException {
+        return reportService.generateReport();
 
 
 
@@ -182,4 +189,5 @@ public class SchoolController {
 
 
 
-}
+
+}}
