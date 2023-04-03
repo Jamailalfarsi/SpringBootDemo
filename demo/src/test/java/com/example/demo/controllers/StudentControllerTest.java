@@ -56,6 +56,12 @@ class StudentControllerTest {
         String studentName=studentController.getStudentById(4).getName();
         assertEquals("sara",studentName);
     }
+    @Test
+    void getStudentByNameWhenIdZerro()throws  Exception{
+        Student studentToTest=studentController.getStudentById(0);
+        assertEquals(null,studentToTest);
+
+    }
 
     @Test
     void getAllActiveSchools() throws  Exception{
