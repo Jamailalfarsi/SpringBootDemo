@@ -44,7 +44,7 @@ class CourseControllerTest {
 
 
     @Test
-    void getByCourseName() {
+    void getByCourseName()throws  Exception {
         String courseName=courseController.getCourseById(2).getName();
         assertEquals("English",courseName);
 
@@ -67,7 +67,7 @@ class CourseControllerTest {
     }
 
     @Test
-    void getAllActiveCourses() {
+    void getAllActiveCourses()throws  Exception {
 //        List<Course> Course=courseController.getByCourseName("English");
 //        for(Course cr:Course){
 //            assertEquals(2,cr.getId());
