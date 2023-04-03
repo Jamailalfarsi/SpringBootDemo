@@ -72,6 +72,13 @@ class SchoolControllerTest {
         }
 
     }
+    @Test
+    void getAllActiveSchoolsN() throws  Exception{
+//        List<School> School=schoolController.getBySchoolName("N");
+//        for(School sch:School){
+//            assertEquals(4,sch.getId());
+//        }
+    }
 
 //    @Test
 //    void getSchoolActiveThrowsErrorOnInvalid()throws  Exception{
