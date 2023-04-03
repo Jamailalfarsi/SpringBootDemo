@@ -52,7 +52,10 @@ class SchoolControllerTest {
 
     @Test
     void getBySchoolName() {
-
+//        List<School> School=schoolController.getBySchoolName("L");
+//        for(School sch:School){
+//            assertEquals(1,sch.getId());
+//        }
     }
 
     @Test
