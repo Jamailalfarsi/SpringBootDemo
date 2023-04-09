@@ -23,6 +23,8 @@ public class StudentService {
 
     @Autowired
     SchoolRepository schoolRepository;
+
+
 //    public void addStudent(){
 //        Student student=new Student();
 //        student.setName("Muzzamil Arif");

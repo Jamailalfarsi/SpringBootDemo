@@ -8,6 +8,8 @@ import javax.persistence.*;
 public class Student extends BaseEntity{
 
 
+
+
     @Id // Defining the Primary key
     // To make the primary key … just like "Identity/Auto Increment"
     @GeneratedValue(strategy = GenerationType.IDENTITY)

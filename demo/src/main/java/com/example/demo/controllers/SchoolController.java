@@ -180,14 +180,10 @@ public class SchoolController {
     @RequestMapping(value="report")
     public String generateSchoolReport()throws JRException, FileNotFoundException {
         return reportService.generateReport();
+    }
+//    @RequestMapping(value="getStudentReport",method = RequestMethod.GET)
+//    public void generateStudentReport() throws JRException, FileNotFoundException {
+//        reportService.generateStudentReport();
+//    }
 
-
-
-
-
-
-
-
-
-
-}}
+    }
