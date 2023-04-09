@@ -10,6 +10,14 @@ public class Mark extends BaseEntity{
     Integer obtainMark;
     String grade;
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
     @ManyToOne // many mark to one course
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     Course course;

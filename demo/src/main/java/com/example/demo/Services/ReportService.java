@@ -1,8 +1,9 @@
 package com.example.demo.Services;
-
 import com.example.demo.DTO.StudentDTO;
+import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
+import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Repositories.SchoolRepository;
 import com.example.demo.Repositories.StudentRepository;
 import net.sf.jasperreports.engine.*;
@@ -27,6 +28,9 @@ public class ReportService  {
     @Autowired
     StudentRepository studentRepository;
 
+//    @Autowired
+//    MarkRepository markRepository;
+
     public static final String pathToReports = "C:\\Users\\user021\\Desktop\\report";
     public String generateReport() throws FileNotFoundException, JRException {
     List<School> schoolList = schoolRepository.getAllSchools();
@@ -46,7 +50,7 @@ public class ReportService  {
         List<Student> studentList = studentRepository.getAllStudents();
         List<StudentDTO> studentDTOList=new ArrayList<>();
         for (Student std:studentList ) {
-            String schoolName = std.getName();
+            String schoolName = std.getSchool().getName();
             String studentName = std.getName();
             Integer studentAge =std.getAge();
 
@@ -54,7 +58,7 @@ public class ReportService  {
             studentDTOList.add(studentDTO);
 
         }
-        
+
 
         File file = ResourceUtils.getFile("classpath:School_AssociatedStudent.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -65,4 +69,5 @@ public class ReportService  {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports+"\\student.pdf");
         return "Report generated : " + pathToReports+"\\student.pdf";
     }
+    
 }

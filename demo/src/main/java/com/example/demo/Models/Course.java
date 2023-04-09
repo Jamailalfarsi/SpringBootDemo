@@ -18,6 +18,14 @@ public class Course extends BaseEntity {
     @Column(name = "course_name")
     String name;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @ManyToOne // many courses to one student
     @JoinColumn(name = "student_id", referencedColumnName = "id")// defining the foreign key which is ID
     Student student;

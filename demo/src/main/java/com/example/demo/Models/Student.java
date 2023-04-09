@@ -30,14 +30,23 @@ public class Student extends BaseEntity{
 
     Integer age;
 //    String rollNumber;
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public School getSchool() {
+        return school;
+    }
 //    @OneToMany
 //    @JoinColumn(referencedColumnName = "id")// defining the foreign key which is ID
 //    List<Course> courses;
 
     @ManyToOne // doing the relation to the school where many student go to 1 school
     @JoinColumn(name = "school_id", referencedColumnName = "id")// defining the foreign key which is ID
+    School school;
     // (we are doing it here because we want the id to be in student)
-    School school; // creating a school object
+    // creating a school object
 
     public Integer getId() {
         return id;
