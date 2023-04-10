@@ -1,4 +1,5 @@
 package com.example.demo.Services;
+import com.example.demo.DTO.MarkDTO;
 import com.example.demo.DTO.StudentDTO;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
@@ -28,8 +29,8 @@ public class ReportService  {
     @Autowired
     StudentRepository studentRepository;
 
-//    @Autowired
-//    MarkRepository markRepository;
+    @Autowired
+    MarkRepository markRepository;
 
     public static final String pathToReports = "C:\\Users\\user021\\Desktop\\report";
     public String generateReport() throws FileNotFoundException, JRException {
@@ -69,5 +70,26 @@ public class ReportService  {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports+"\\student.pdf");
         return "Report generated : " + pathToReports+"\\student.pdf";
     }
-    
+    public String generateMarkReport() throws FileNotFoundException, JRException {
+        List<Mark> markList = markRepository.getAllMarks();
+        List<MarkDTO> MarkDTOList = new ArrayList<>();
+        for (Mark markListVariable : markList) {
+            String courseName = markListVariable.getCourse().getName();
+            Integer obtainMarks = markListVariable.getObtainMark();
+            String studentGrade = markListVariable.getGrade();
+            MarkDTO markDTO = new MarkDTO(courseName, obtainMarks, studentGrade);
+            MarkDTOList.add(markDTO);
+        }
+
+
+        File file = ResourceUtils.getFile("classpath:Course_Mark.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(MarkDTOList);
+        Map<String, Object> paramters = new HashMap<>();
+        paramters.put("CreatedBy", "Jamail");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,paramters , dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports+"\\mark.pdf");
+        return "Report generated : " + pathToReports+"\\mark.pdf";
+    }
+
 }

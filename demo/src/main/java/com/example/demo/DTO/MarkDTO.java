@@ -16,6 +16,12 @@ public class MarkDTO {
     Integer obtainMark;
     String grade;
 
+    public MarkDTO(String courseName, Integer obtainMark, String grade) {
+        this.courseName = courseName;
+        this.obtainMark = obtainMark;
+        this.grade = grade;
+    }
+
     @ManyToOne // many courses to one student
     @JoinColumn(name = "student_id", referencedColumnName = "id")// defining the foreign key which is ID
     Student student;
