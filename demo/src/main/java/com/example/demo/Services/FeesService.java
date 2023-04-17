@@ -14,11 +14,11 @@ public class FeesService {
     FeesRepository feesRepository;
 
     public List<Fees> getAllFeeses() {
-        return feesRepository.getAllSchools();
+        return feesRepository.getAllFees();
     }
 
     public Fees getFeesById(Integer id) {
-        return feesRepository.getSchoolById(id);
+        return feesRepository.getFeesById(id);
 
     }
 
