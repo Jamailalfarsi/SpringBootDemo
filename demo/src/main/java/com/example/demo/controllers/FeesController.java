@@ -16,5 +16,10 @@ public class FeesController {
     @Autowired
     FeesService feesService;
 
-   
+    @RequestMapping(value = "getAll")
+    public List<Fees> getAllFeeses() {
+        List<Fees> feeses = new ArrayList<>();
+        feeses = feesService.getAllFeeses();
+        return feeses;
+    }
 }
