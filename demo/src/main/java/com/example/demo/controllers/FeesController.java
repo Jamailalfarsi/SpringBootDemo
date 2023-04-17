@@ -6,6 +6,7 @@ import com.example.demo.Repositories.FeesRepository;
 import com.example.demo.Services.FeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -21,5 +22,11 @@ public class FeesController {
         List<Fees> feeses = new ArrayList<>();
         feeses = feesService.getAllFeeses();
         return feeses;
+    }
+
+    @RequestMapping(value = "getById")
+    public Fees getFeesById(@RequestParam Integer id) {
+        Fees fees = feesService.getFeesById(id);
+        return fees;
     }
 }
