@@ -6,6 +6,10 @@ import com.example.demo.Repositories.FeesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +25,10 @@ public class FeesService {
         return feesRepository.getFeesById(id);
 
     }
+    public Fees getFeesBydatePaid(Date datePaid) {
+        return feesRepository.getFeesBydatePaid(datePaid);
+    }
+
 
 
 }
