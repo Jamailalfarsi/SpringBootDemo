@@ -17,6 +17,11 @@ public class FeesService {
         return feesRepository.getAllFeeses();
     }
 
+    public Fees getFeesById(Integer id) {
+        return feesRepository.getFeesById(id);
+
+    }
+
 
 }
 
