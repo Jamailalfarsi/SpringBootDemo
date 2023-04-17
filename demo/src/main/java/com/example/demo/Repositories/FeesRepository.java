@@ -16,7 +16,8 @@ public interface FeesRepository extends CrudRepository<Fees,Integer> {
     @Query(value = "SELECT s from Fees s")
     List<Fees> getAllFeeses();
 
-    
+    @Query (value = "SELECT s from Fees s where s.id = :id")
+    Fees getFeesById(@Param("id")Integer id);
 
 
 }
