@@ -14,13 +14,9 @@ public class FeesService {
     FeesRepository feesRepository;
 
     public List<Fees> getAllFeeses() {
-        return feesRepository.getAllFees();
+        return feesRepository.getAllFeeses();
     }
 
-    public Fees getFeesById(Integer id) {
-        return feesRepository.getFeesById(id);
-
-    }
 
 }
 
