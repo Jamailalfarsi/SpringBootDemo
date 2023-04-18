@@ -1,9 +1,12 @@
 package com.example.demo.Services;
+import com.example.demo.DTO.CourseAverageMarkDTO;
 import com.example.demo.DTO.MarkDTO;
 import com.example.demo.DTO.StudentDTO;
+import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
 import com.example.demo.Models.Student;
+import com.example.demo.Repositories.CourseRepository;
 import com.example.demo.Repositories.MarkRepository;
 import com.example.demo.Repositories.SchoolRepository;
 import com.example.demo.Repositories.StudentRepository;
@@ -31,6 +34,9 @@ public class ReportService  {
 
     @Autowired
     MarkRepository markRepository;
+
+    @Autowired
+    CourseRepository courseRepository;
 
     public static final String pathToReports = "C:\\Users\\user021\\Desktop\\report";
     public String generateReport() throws FileNotFoundException, JRException {
@@ -91,5 +97,25 @@ public class ReportService  {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports+"\\mark.pdf");
         return "Report generated : " + pathToReports+"\\mark.pdf";
     }
+
+    public String generateAverageMarkReport() throws JRException {
+
+        List<Course> courseList = courseRepository.getAllCourses();
+        List<CourseAverageMarkDTO> courseMarkDTOList = new ArrayList<>();
+        for (Course course : courseList) {
+            String courseName = course.getName();
+            Integer averageMark = markRepository.getAverageOfMarksByCourseName(courseName);
+            courseMarkDTOList.add(new CourseAverageMarkDTO(courseName,averageMark));
+        }
+        File file = new File("");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(courseMarkDTOList);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("CreatedBy", "Jamail");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\courseAverageMark.pdf");
+        return "Report generated : " + pathToReports + "\\courseAverageMark.pdf";
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Models.Mark;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface MarkRepository extends CrudRepository<Mark,Integer> {
+public interface MarkRepository extends JpaRepository<Mark,Integer> {
     @Query(value = "SELECT s from Mark s")
     List<Mark> getAllMarks();
 
@@ -33,6 +34,14 @@ public interface MarkRepository extends CrudRepository<Mark,Integer> {
     @Query(value = "SELECT s from Mark s where s.updatedDate= :updatedDate")
     Mark getMarkByUpdatedDate(@Param("updatedDate")Date updatedDate);
 
+    @Query(value = "select m from Mark m where m.course.name = :courseName ")
+    List<Mark> getMarksByCourseName(@Param("courseName") String courseName);
+
+    @Query(value = "select avg(m.obtainedMarks) from Mark m where m.course.name = :courseName ")
+    Integer getAverageOfMarksByCourseName(@Param("courseName") String courseName);
+
+
 
 
 }
+

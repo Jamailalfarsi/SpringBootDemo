@@ -5,7 +5,7 @@
     <field name="courseName" class="java.lang.String">
 
     </field>
-    <field name="averageMark" class="java.sql.Timestamp">
+    <field name="averageMark" class="java.sql.Integer">
 
     </field>
     <background>
