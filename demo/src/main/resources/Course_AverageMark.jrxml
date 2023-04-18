@@ -2,10 +2,10 @@
 <!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Course_AverageMark" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f34e8824-c0ef-4d3c-8861-928a4884810c">
 
-    <field name="CUSTOMERID" class="java.lang.String">
+    <field name="courseName" class="java.lang.String">
 
     </field>
-    <field name="ORDERDATE" class="java.sql.Timestamp">
+    <field name="averageMark" class="java.sql.Timestamp">
 
     </field>
     <background>
@@ -72,7 +72,7 @@
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{CUSTOMERID}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{courseName}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight">
                 <reportElement x="277" y="0" width="277" height="20" uuid="e7331ccf-f1b8-4d2c-ba87-9e50f650c848">
@@ -81,7 +81,7 @@
                 <textElement>
                     <font size="14"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{averageMark}]]></textFieldExpression>
             </textField>
         </band>
     </detail>
