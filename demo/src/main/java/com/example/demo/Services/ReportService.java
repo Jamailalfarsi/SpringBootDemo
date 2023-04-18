@@ -107,7 +107,7 @@ public class ReportService  {
             Integer averageMark = markRepository.getAverageOfMarksByCourseName(courseName);
             courseMarkDTOList.add(new CourseAverageMarkDTO(courseName,averageMark));
         }
-        File file = new File("");
+        File file = new File("C:\\Users\\user021\\Desktop\\demo\\demo\\src\\main\\java\\com\\example\\demo\\Course_AverageMark.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(courseMarkDTOList);
         Map<String, Object> parameters = new HashMap<>();
@@ -115,6 +115,7 @@ public class ReportService  {
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\courseAverageMark.pdf");
         return "Report generated : " + pathToReports + "\\courseAverageMark.pdf";
+
     }
 
 

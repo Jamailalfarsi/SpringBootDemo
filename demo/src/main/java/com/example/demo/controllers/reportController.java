@@ -25,4 +25,15 @@ public class reportController {
         reportService.generateMarkReport();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "ReportForAverageMarks")
+    public String generateReportForCourseMark() {
+        try {
+            return reportService.generateAverageMarkReport();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+
+        }
+    }
+
 }
