@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Course_AverageMark" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f34e8824-c0ef-4d3c-8861-928a4884810c">
-    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
-    <queryString language="SQL">
-        <![CDATA[Select*from Orders]]>
-    </queryString>
+
     <field name="CUSTOMERID" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="CUSTOMERID"/>
-        <property name="com.jaspersoft.studio.field.label" value="CUSTOMERID"/>
-        <property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+
     </field>
     <field name="ORDERDATE" class="java.sql.Timestamp">
-        <property name="com.jaspersoft.studio.field.name" value="ORDERDATE"/>
-        <property name="com.jaspersoft.studio.field.label" value="ORDERDATE"/>
-        <property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+        
     </field>
     <background>
         <band/>
