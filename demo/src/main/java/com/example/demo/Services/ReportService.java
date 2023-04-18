@@ -98,7 +98,7 @@ public class ReportService  {
         return "Report generated : " + pathToReports+"\\mark.pdf";
     }
 
-    public String generateAverageMarkReport() throws JRException {
+    public String generateAverageMarkReport() throws FileNotFoundException, JRException  {
 
         List<Course> courseList = courseRepository.getAllCourses();
         List<CourseAverageMarkDTO> courseMarkDTOList = new ArrayList<>();
@@ -107,7 +107,9 @@ public class ReportService  {
             Integer averageMark = markRepository.getAverageOfMarksByCourseName(courseName);
             courseMarkDTOList.add(new CourseAverageMarkDTO(courseName,averageMark));
         }
-        File file = new File("C:\\Users\\user021\\Desktop\\demo\\demo\\src\\main\\java\\com\\example\\demo\\Course_AverageMark.jrxml");
+
+
+        File file = ResourceUtils.getFile("classpath:Course_AverageMark.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(courseMarkDTOList);
         Map<String, Object> parameters = new HashMap<>();
