@@ -6,7 +6,7 @@
 
     </field>
     <field name="ORDERDATE" class="java.sql.Timestamp">
-        
+
     </field>
     <background>
         <band/>
