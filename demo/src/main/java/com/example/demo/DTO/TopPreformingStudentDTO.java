@@ -8,5 +8,13 @@ import lombok.Setter;
 @Setter
 @Data
 public class TopPreformingStudentDTO {
+    String studentName;
+    String schoolName;
+
+    public TopPreformingStudentDTO(String studentName, String schoolName) {
+        this.studentName = studentName;
+        this.schoolName = schoolName;
+    }
+
 
 }
