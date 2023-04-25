@@ -2,6 +2,7 @@ package com.example.demo.Services;
 import com.example.demo.DTO.CourseAverageMarkDTO;
 import com.example.demo.DTO.MarkDTO;
 import com.example.demo.DTO.StudentDTO;
+import com.example.demo.DTO.TopPreformingStudentDTO;
 import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
@@ -118,6 +119,28 @@ public class ReportService  {
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\courseAverageMark.pdf");
         return "Report generated : " + pathToReports + "\\courseAverageMark.pdf";
 
+    }
+    public String generateTopPerformingStudentReport() throws JRException {
+
+        List<School> schoolList = schoolRepository.getAllSchools();
+        Map<School, Student> schoolStudentMap = new HashMap<>();
+        List<TopPreformingStudentDTO> topPreformingStudentDTOSList = new ArrayList<>();
+
+        for (School school : schoolList) {
+            List<Student> studentList = studentRepository.getStudentsBySchoolId(school.getId());
+            Integer highestMarks = 0;
+            Student studentWithHighestMarks = new Student();
+            for (Student student : studentList) {
+                Integer studentId = student.getId();
+                Integer studentTotalMark = markRepository.getSumOfMarksByStudentId(studentId);
+                if (studentTotalMark > highestMarks) {
+                    highestMarks = studentTotalMark;
+                    studentWithHighestMarks = student;
+                }
+            }
+            schoolStudentMap.put(school, studentWithHighestMarks);
+            topPreformingStudentDTOSList.add(new TopPreformingStudentDTO(school.getName(), studentWithHighestMarks.getName()));
+        }
     }
 
 
