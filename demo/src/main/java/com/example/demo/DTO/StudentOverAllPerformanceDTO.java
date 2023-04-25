@@ -8,13 +8,14 @@ import lombok.Setter;
 @Setter
 @Data
 public class StudentOverAllPerformanceDTO {
+    String studentName;
+    String studentRollNumber;
+    Integer studentId;
     public StudentOverAllPerformanceDTO(String studentName, String studentRollNumber, Integer studentId) {
         this.studentName = studentName;
         this.studentRollNumber = studentRollNumber;
         this.studentId = studentId;
     }
 
-    String studentName;
-    String studentRollNumber;
-    Integer studentId;
+
 }
