@@ -45,6 +45,16 @@ public class reportController {
 
         }
     }
+    @RequestMapping(method = RequestMethod.GET, value = "generateOverAllPerformanceForEachStudent")
+    public String generateOverAllPerformanceForEachStudent() {
+        try {
+            return reportService.overAllPerformanceForEachStudent();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+
+        }
+    }
 
 
 }
