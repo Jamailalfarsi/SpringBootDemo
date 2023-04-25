@@ -35,5 +35,15 @@ public class reportController {
 
         }
     }
+    @RequestMapping(method = RequestMethod.GET, value = "generateTopPerformingStudentReport")
+    public String generateTopPerformingStudentReport() {
+        try {
+            return reportService.generateTopPerformingStudentReport();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+
+        }
+    }
 
 }
