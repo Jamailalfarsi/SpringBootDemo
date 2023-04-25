@@ -9,13 +9,16 @@ import lombok.Setter;
 @Data
 public class StudentOverAllPerformanceDTO {
     String studentName;
-    String studentRollNumber;
+    Integer studentAge;
     Integer studentId;
-    public StudentOverAllPerformanceDTO(String studentName, String studentRollNumber, Integer studentId) {
+    public StudentOverAllPerformanceDTO(String studentName, Integer studentAge, Integer studentId) {
         this.studentName = studentName;
-        this.studentRollNumber = studentRollNumber;
+        this.studentAge = studentAge;
         this.studentId = studentId;
     }
+
+
+
 
 
 }

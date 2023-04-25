@@ -1,8 +1,5 @@
 package com.example.demo.Services;
-import com.example.demo.DTO.CourseAverageMarkDTO;
-import com.example.demo.DTO.MarkDTO;
-import com.example.demo.DTO.StudentDTO;
-import com.example.demo.DTO.TopPreformingStudentDTO;
+import com.example.demo.DTO.*;
 import com.example.demo.Models.Course;
 import com.example.demo.Models.Mark;
 import com.example.demo.Models.School;
@@ -152,6 +149,22 @@ public class ReportService {
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TopPreformingStudent.pdf");
         return "Report generated : " + pathToReports + "\\TopPreformingStudent.pdf";
+    }
+    public String overAllPerformanceForEachStudent() throws FileNotFoundException, JRException {
+        List<Student> studentList = studentRepository.getAllStudents();
+        List<StudentOverAllPerformanceDTO> studentOverAllPerformanceDTOS = new ArrayList<>();
+        for (Student student : studentList) {
+            Integer studentId = student.getId();
+            String studentName = student.getName();
+            Integer studentAge = student.getAge();
+            Integer studentAverageMarks = markRepository.getAvgOfMarksByStudentId(studentId);
+            StudentOverAllPerformanceDTO dto = new StudentOverAllPerformanceDTO(studentName, studentAge, studentAverageMarks);
+            studentOverAllPerformanceDTOS.add(dto);
+        }
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentOverAllPerformanceDTOS);
+
+        return reportPrinting(dataSource, "OverallStudentPerformance", "OverAllStudentPerformance");
+
     }
 }
 
