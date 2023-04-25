@@ -161,9 +161,37 @@ public class ReportService {
             StudentOverAllPerformanceDTO dto = new StudentOverAllPerformanceDTO(studentName, studentAge, studentAverageMarks);
             studentOverAllPerformanceDTOS.add(dto);
         }
+        File file = ResourceUtils.getFile("classpath:Student_OverAllPerformance.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentOverAllPerformanceDTOS);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("CreatedBy", "Jamail");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\OverAllPerformance.pdf");
+        return "Report generated : " + pathToReports + "\\OverAllPerformance.pdf";
 
-        return reportPrinting(dataSource, "OverallStudentPerformance", "OverAllStudentPerformance");
+
+
+    }
+    public String totalCountOfStudents() throws Exception {
+        List<School> schoolList = schoolRepository.getAllSchools();
+        List<CountOfStudentWithSchoolDTO> countOfStudent = new ArrayList<>();
+        for (School school : schoolList) {
+            Integer schoolId = school.getId();
+            String schoolName = school.getName();
+            Integer countOfStudents = studentRepository.getCountOfStudentsBySchoolId(schoolId);
+            CountOfStudentWithSchoolDTO countOfStudentWithSchoolDTO = new CountOfStudentWithSchoolDTO(countOfStudents, schoolName);
+            countOfStudent.add(countOfStudentWithSchoolDTO);
+        }
+        File file = ResourceUtils.getFile("classpath:Student_OverAllPerformance.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(countOfStudent);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("CreatedBy", "Jamail");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\TotalNumberOfStudent.pdf");
+        return "Report generated : " + pathToReports + "\\TotalNumberOfStudent.pdf";
+
 
     }
 }
