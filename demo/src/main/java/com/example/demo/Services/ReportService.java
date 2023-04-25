@@ -173,7 +173,7 @@ public class ReportService {
 
 
     }
-    public String totalCountOfStudents() throws Exception {
+    public String totalCountOfStudents() throws FileNotFoundException, JRException {
         List<School> schoolList = schoolRepository.getAllSchools();
         List<CountOfStudentWithSchoolDTO> countOfStudent = new ArrayList<>();
         for (School school : schoolList) {
