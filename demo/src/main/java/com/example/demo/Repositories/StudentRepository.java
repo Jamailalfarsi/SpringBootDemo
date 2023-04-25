@@ -51,8 +51,8 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
     @Query (value = "SELECT s from Student s where s.age = :age")
     Student getStudentByAge(@Param("age")Integer age);
 
-    @Query(value = "SELECT COUNT(id) From student where school_id = ?1", nativeQuery = true)
-    Integer getCountOfStudentsBySchoolId(Integer schoolId);
+    @Query(value = "SELECT COUNT(id) From student where id = ?1", nativeQuery = true)
+    Integer getCountOfStudentsBySchoolId(Integer id);
 
 
 

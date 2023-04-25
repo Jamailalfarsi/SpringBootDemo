@@ -55,6 +55,16 @@ public class reportController {
 
         }
     }
+    @RequestMapping(method = RequestMethod.GET, value = "CountOfStudentWithSchool")
+    public String generateCountOfStudentWithSchool() {
+        try {
+            return reportService.totalCountOfStudents();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Exception("Error").getMessage();
+
+        }
+    }
 
 
 }
