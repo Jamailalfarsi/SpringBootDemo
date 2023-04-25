@@ -194,6 +194,27 @@ public class ReportService {
 
 
     }
+    public String getTheDistributionOfGrades() throws Exception {
+        List<String> coursesNames = courseRepository.getByCourseName();
+        List<String> listOfUniqueGrades = markRepository.getDistinctGrades();
+        List<CourseWithGradesDTO> courseWithGradesDTOS = new ArrayList<>();
+        for (String course : coursesNames) {
+            for (String grade : listOfUniqueGrades) {
+                Integer count = markRepository.getCountOfMarksByGradeAndCourseName(grade, course);
+                courseWithGradesDTOS.add(new CourseWithGradesDTO(course, count, grade));
+            }
+        }
+        File file = ResourceUtils.getFile("classpath:Distribution_of_grades.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(courseWithGradesDTOS);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("CreatedBy", "Jamail");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pathToReports + "\\DistributionMarks.pdf");
+        return "Report generated : " + pathToReports + "\\DistributionMarks.pdf";
+
+
+    }
 }
 
 
